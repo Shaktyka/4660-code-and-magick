@@ -8,7 +8,6 @@ var renderCloud = function(ctx, x, y, color) {
 
   ctx.beginPath();
   ctx.fillStyle = color;
-  ctx.strokeStyle = color;
   ctx.moveTo(x, y);
   ctx.lineTo(x+CLOUD_WIDTH/2, y+coeff);
   ctx.lineTo(x+CLOUD_WIDTH, y);
@@ -23,7 +22,7 @@ var renderCloud = function(ctx, x, y, color) {
 };
 
 window.renderStatistics = function(ctx, names, times) {
-  renderCloud(ctx, 110, 20, "rgba(0, 0, 0, 0.3)");
+  renderCloud(ctx, 110, 20, "rgba(0, 0, 0, 0.7)");
   renderCloud(ctx, 100, 10, "#ffffff");
 
   ctx.fillStyle = "#000000";
