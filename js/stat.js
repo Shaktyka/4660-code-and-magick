@@ -6,7 +6,7 @@ var CLOUD_X = 100;
 var CLOUD_Y = 10;
 var GAP = 10;
 // var FONT_GAP = 16;
-var FONT_WIDTH = 40;
+// var FONT_WIDTH = 40;
 var BAR_WIDTH = 40;
 var BAR_GAP = 50;
 var MAX_HIST_HEIGHT = 150;
@@ -41,22 +41,18 @@ var getMaxElement = function (array) {
 };
 
 var getBarColor = function () {
+  // генерируем случайное число от 10 до 150, это синий диапазон
   var ran = Math.abs(Math.floor(Math.random() * (10 - 150) + 10));
+  // формируем вывод цвета в нужном формате rgba
   var color = 'rgba(' + ran + ', ' + ran + ', ' + '255, 1)';
   return color;
 };
-
-//var getBarColor = function () {
-//  var color;
-//  var colors = ['rgba(10, 10, 255, 1)', 'rgba(30, 30, 255, 1)', 'rgba(50, 50, 255, 1)', 'rgba(70, 70, 255, 1)', 'rgba(100, 100, 255, 1)'];
-//  return color = colors[Math.floor(Math.random() * colors.length)];
-//};
 
 window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#ffffff');
 
-  // Отрисока текста в облаке
+  // Отрисовка текста в облаке
   ctx.fillStyle = '#000000';
   ctx.font = '16px PT Mono';
   ctx.textBaseline = 'hanging';
@@ -75,18 +71,18 @@ window.renderStatistics = function (ctx, names, times) {
   for (var i = 0; i < names.length; i++) {
     ctx.fillStyle = '#000000';
     ctx.fillText(
-    names[i], 
-    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, 
-    CLOUD_BOT - GAP * 3);
-  if (names[i] == 'Вы') {
+        names[i], 
+        CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, 
+        CLOUD_BOT - GAP * 3);
+    if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
       ctx.fillStyle = getBarColor();
     }
     ctx.fillRect(
-    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, 
-    (CLOUD_BOT) - (GAP * 3 + GAP) - (times[i] * MAX_HIST_HEIGHT) / maxTime, 
-    BAR_WIDTH, 
-    (times[i] * MAX_HIST_HEIGHT) / maxTime);  
-  };
+        CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, 
+        (CLOUD_BOT) - (GAP * 3 + GAP) - (times[i] * MAX_HIST_HEIGHT) / maxTime, 
+        BAR_WIDTH, 
+        (times[i] * MAX_HIST_HEIGHT) / maxTime);  
+  }
 };
