@@ -60,4 +60,24 @@ window.renderStatistics = function (ctx, names, times) {
     (CLOUD_BOT) - (GAP * 3 + GAP) - MAX_HIST_HEIGHT, 
     BAR_WIDTH, 
     MAX_HIST_HEIGHT);
+  
+  ctx.fillText(
+    'Юлия', 
+    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * 2, 
+    CLOUD_BOT - GAP * 3);
+  ctx.fillRect(
+    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * 2, 
+    (CLOUD_BOT) - (GAP * 3 + GAP) - MAX_HIST_HEIGHT, 
+    BAR_WIDTH, 
+    MAX_HIST_HEIGHT);
+  
+  ctx.fillText(
+    'Егор', 
+    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * 3, 
+    CLOUD_BOT - GAP * 3);
+  ctx.fillRect(
+    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * 3, 
+    (CLOUD_BOT) - (GAP * 3 + GAP) - MAX_HIST_HEIGHT, 
+    BAR_WIDTH, 
+    MAX_HIST_HEIGHT);
 };
