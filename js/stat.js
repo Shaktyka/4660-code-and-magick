@@ -33,7 +33,7 @@ var renderCloud = function (ctx, x, y, color) {
 var getMaxElement = function (array) {
   var maxElement = array[0];
   for (var i = 0; i < array.length; i++) {
-    if (array[0] > maxElement) {
+    if (array[i] > maxElement) {
       maxElement = array[i];    
     }
   }
