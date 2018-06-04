@@ -48,36 +48,20 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.textBaseline = 'baseline';
   ctx.font = '16px PT Mono';
   
-  ctx.fillText('Вы', CLOUD_X + BAR_GAP, CLOUD_BOT - GAP * 3);
-  ctx.fillRect(CLOUD_X + BAR_GAP, (CLOUD_BOT) - (GAP * 3 + GAP) - MAX_HIST_HEIGHT, BAR_WIDTH, MAX_HIST_HEIGHT);
+  var playerIndex = 0;
+  var playerName = 'Вы';
   
-  ctx.fillText(
-    'Иван', 
-    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP), 
+  var players = ['Вы', 'Иван', 'Юлия', 'Егор'];
+  
+  for (var i = 0; i < players.length; i++) {
+    ctx.fillText(
+    players[i], 
+    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, 
     CLOUD_BOT - GAP * 3);
   ctx.fillRect(
-    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP), 
+    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, 
     (CLOUD_BOT) - (GAP * 3 + GAP) - MAX_HIST_HEIGHT, 
     BAR_WIDTH, 
-    MAX_HIST_HEIGHT);
-  
-  ctx.fillText(
-    'Юлия', 
-    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * 2, 
-    CLOUD_BOT - GAP * 3);
-  ctx.fillRect(
-    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * 2, 
-    (CLOUD_BOT) - (GAP * 3 + GAP) - MAX_HIST_HEIGHT, 
-    BAR_WIDTH, 
-    MAX_HIST_HEIGHT);
-  
-  ctx.fillText(
-    'Егор', 
-    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * 3, 
-    CLOUD_BOT - GAP * 3);
-  ctx.fillRect(
-    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * 3, 
-    (CLOUD_BOT) - (GAP * 3 + GAP) - MAX_HIST_HEIGHT, 
-    BAR_WIDTH, 
-    MAX_HIST_HEIGHT);
+    MAX_HIST_HEIGHT);  
+  };
 };
