@@ -53,7 +53,6 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', 310, 50);
   
   // Гистограмма
-  ctx.fillStyle = '#000000';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'baseline';
   ctx.font = '16px PT Mono';
@@ -62,11 +61,17 @@ window.renderStatistics = function (ctx, names, times) {
   
   // Цикл для отрисовки имён и столбиков
   for (var i = 0; i < names.length; i++) {
+    ctx.fillStyle = '#000000';
     ctx.fillText(
     names[i], 
     CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, 
     CLOUD_BOT - GAP * 3);
-  ctx.fillRect(
+  if (names[i] == 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    } else {
+      ctx.fillStyle = '#1142AA';
+    }
+    ctx.fillRect(
     CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, 
     (CLOUD_BOT) - (GAP * 3 + GAP) - (times[i] * MAX_HIST_HEIGHT) / maxTime, 
     BAR_WIDTH, 
