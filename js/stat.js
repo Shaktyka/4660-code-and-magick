@@ -2,6 +2,14 @@
 
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
+var CLOUD_X = 100;
+var CLOUD_Y = 10;
+var GAP = 10;
+var FONT_GAP = 16;
+var FONT_WIDTH = 40;
+var BAR_WIDTH = 40;
+var BAR_GAP = 50;
+var MAX_HIST_HEIGHT = 150;
 
 var renderCloud = function (ctx, x, y, color) {
   var coeff = 20;
@@ -22,14 +30,26 @@ var renderCloud = function (ctx, x, y, color) {
 };
 
 window.renderStatistics = function (ctx, names, times) {
-  renderCloud(ctx, 110, 20, 'rgba(0, 0, 0, 0.7)');
-  renderCloud(ctx, 100, 10, '#ffffff');
+  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, '#ffffff');
 
+  // Отрисока текста в облаке
+  
   ctx.fillStyle = '#000000';
   ctx.font = '16px PT Mono';
   ctx.textBaseline = 'hanging';
   ctx.textAlign = 'center';
   ctx.fillText('Ура, вы победили!', 310, 40);
   ctx.fillText('Список результатов:', 310, 60);
+  
+  // Гистограмма
+  
+  ctx.fillStyle = '#000000';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'baseline';
+  ctx.font = '16px PT Mono';
+  
+  ctx.fillText('Вы', 160, 230);
+  ctx.fillRect(160, 100, 40, 100);
 };
 
