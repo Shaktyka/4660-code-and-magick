@@ -83,6 +83,11 @@ window.renderStatistics = function (ctx, names, times) {
         CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, 
         (cloudBottom) - (GAP * 3 + GAP) - (times[i] * MAX_HIST_HEIGHT) / maxTime, 
         BAR_WIDTH, 
-        (times[i] * MAX_HIST_HEIGHT) / maxTime);  
+        (times[i] * MAX_HIST_HEIGHT) / maxTime);
+    ctx.fillStyle = '#000000';
+    ctx.fillText(
+        Math.round(times[i]), 
+        CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, 
+        cloudBottom - (GAP * 3 + GAP) - (times[i] * MAX_HIST_HEIGHT) / maxTime - GAP * 1.5);
   }
 };
