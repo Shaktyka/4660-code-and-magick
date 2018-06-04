@@ -10,9 +10,10 @@ var FONT_WIDTH = 40;
 var BAR_WIDTH = 40;
 var BAR_GAP = 50;
 var MAX_HIST_HEIGHT = 150;
+var CLOUD_BOT = CLOUD_Y + CLOUD_HEIGHT;
 
 var renderCloud = function (ctx, x, y, color) {
-  var coeff = 20;
+  var coeff = 10;
 
   ctx.beginPath();
   ctx.fillStyle = color;
@@ -39,8 +40,8 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.font = '16px PT Mono';
   ctx.textBaseline = 'hanging';
   ctx.textAlign = 'center';
-  ctx.fillText('Ура, вы победили!', 310, 40);
-  ctx.fillText('Список результатов:', 310, 60);
+  ctx.fillText('Ура, вы победили!', 310, 30);
+  ctx.fillText('Список результатов:', 310, 50);
   
   // Гистограмма
   
@@ -49,7 +50,7 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.textBaseline = 'baseline';
   ctx.font = '16px PT Mono';
   
-  ctx.fillText('Вы', 160, 230);
-  ctx.fillRect(160, 100, 40, 100);
+  ctx.fillText('Вы', CLOUD_X + BAR_GAP, CLOUD_BOT - GAP*3);
+  ctx.fillRect(CLOUD_X + BAR_GAP, (CLOUD_BOT) - (GAP*3 + GAP) - MAX_HIST_HEIGHT, BAR_WIDTH, MAX_HIST_HEIGHT);
 };
 
