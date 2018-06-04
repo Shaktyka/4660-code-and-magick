@@ -5,7 +5,7 @@ var CLOUD_HEIGHT = 270;
 var CLOUD_X = 100;
 var CLOUD_Y = 10;
 var GAP = 10;
-var FONT_GAP = 16;
+// var FONT_GAP = 16;
 var FONT_WIDTH = 40;
 var BAR_WIDTH = 40;
 var BAR_GAP = 50;
@@ -35,7 +35,6 @@ window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#ffffff');
 
   // Отрисока текста в облаке
-  
   ctx.fillStyle = '#000000';
   ctx.font = '16px PT Mono';
   ctx.textBaseline = 'hanging';
@@ -44,13 +43,21 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', 310, 50);
   
   // Гистограмма
-  
   ctx.fillStyle = '#000000';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'baseline';
   ctx.font = '16px PT Mono';
   
-  ctx.fillText('Вы', CLOUD_X + BAR_GAP, CLOUD_BOT - GAP*3);
-  ctx.fillRect(CLOUD_X + BAR_GAP, (CLOUD_BOT) - (GAP*3 + GAP) - MAX_HIST_HEIGHT, BAR_WIDTH, MAX_HIST_HEIGHT);
+  ctx.fillText('Вы', CLOUD_X + BAR_GAP, CLOUD_BOT - GAP * 3);
+  ctx.fillRect(CLOUD_X + BAR_GAP, (CLOUD_BOT) - (GAP * 3 + GAP) - MAX_HIST_HEIGHT, BAR_WIDTH, MAX_HIST_HEIGHT);
+  
+  ctx.fillText(
+    'Иван', 
+    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP), 
+    CLOUD_BOT - GAP * 3);
+  ctx.fillRect(
+    CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP), 
+    (CLOUD_BOT) - (GAP * 3 + GAP) - MAX_HIST_HEIGHT, 
+    BAR_WIDTH, 
+    MAX_HIST_HEIGHT);
 };
-
