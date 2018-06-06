@@ -31,3 +31,25 @@ var getWizardName = function (wizNames, wizFornames, isDirect) {
   }
   return wizardName;
 };
+
+// Функция, возвращающая объект собранного рандомно мага
+var getWizObject = function () {
+  var wizObj = {
+    name: getWizardName(names, fornames, true),
+    coatColor: getRandElem(coatColor),
+    eyesColor: getRandElem(eyesColor)
+  };
+  return wizObj;
+};
+
+// Функция, возвращающая массив из х объектов магов
+
+var getWizardsArray = function (num) {
+  var wizardsArray = [];
+  for (var i = 0; i < num - 1; i++) {
+    wizardsArray[i] = getWizObject();
+    wizardsArray.push(wizardsArray[i]);
+  }
+  return wizardsArray;
+};
+getWizardsArray(4);
