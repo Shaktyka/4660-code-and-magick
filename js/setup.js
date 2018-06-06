@@ -12,14 +12,22 @@ var coatColor = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)'
 
 var eyesColor = ['black', 'red', 'blue', 'yellow', 'green'];
 
+// Функция, которая выбирает рандомный элемент из любого переданного ей массива
 var getRandElem = function (massiveName) {
   var randElem = Math.floor(Math.random() * massiveName.length);
   return massiveName[randElem];
 };
 
-// Объект Волшебник
-// {
-//    name: 'составное имя',
-//    coatColor: '',
-//    eyesColor: ''
-// }
+// Функция, которая формирует имя мага из имени и фамилии, причём есть возможность поменять местами имя и фамилию
+
+var getWizardName = function (wizNames, wizFornames, isDirect) {
+  var wizardName;
+  var wizName = getRandElem(wizNames);
+  var wizForname = getRandElem(wizFornames);
+  if (isDirect) {
+    wizardName = wizName + ' ' + wizForname;
+  } else {
+    wizardName = wizForname + ' ' + wizName;
+  }
+  return wizardName;
+};
