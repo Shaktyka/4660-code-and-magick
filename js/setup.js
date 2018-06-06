@@ -12,14 +12,13 @@ var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)
 
 var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 
-// Функция, которая выбирает рандомный элемент из любого переданного ей массива
-var getRandomElement = function (arrayName) {
-  var randomElement = Math.floor(Math.random() * arrayName.length);
-  return arrayName[randomElement];
+// Функция, которая выбирает рандомный элемент из любого переданного ей массива.
+var getRandomElement = function (array) {
+  var randomElement = Math.floor(Math.random() * array.length);
+  return array[randomElement];
 };
 
-// Функция, которая формирует имя мага из имени и фамилии, причём есть возможность поменять местами имя и фамилию
-
+// Функция, которая формирует имя мага из имени и фамилии, причём есть возможность поменять местами имя и фамилию.
 var getWizardName = function (wizardName, wizardForname, isDirect) {
   var wizardFullName;
   var NameOfWizard = getRandomElement(wizardName);
@@ -32,7 +31,7 @@ var getWizardName = function (wizardName, wizardForname, isDirect) {
   return wizardFullName;
 };
 
-// Функция, возвращающая объект собранного рандомно мага
+// Функция, возвращающая объект собранного рандомно мага.
 var getWizardObject = function () {
   var wizardObject = {
     name: getWizardName(WIZARD_NAMES, WIZARD_FORNAMES, true),
@@ -42,7 +41,7 @@ var getWizardObject = function () {
   return wizardObject;
 };
 
-// Функция, возвращающая массив из х объектов магов
+// Функция, возвращающая массив из х объектов магов.
 
 var getWizardsArray = function (number) {
   var wizardsArray = [];
@@ -53,12 +52,13 @@ var getWizardsArray = function (number) {
 };
 
 // Генерация списка волшебников
-// Находим блок, куда будем вставлять сгенерированный список
+// Находим блок, куда будем вставлять сгенерированный список.
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
-// Находим шаблон, который будем использовать для генерации волшебника
+// Находим шаблон, который будем использовать для генерации волшебника.
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
+// Клонируем шаблон мага, назначаем элементам соответствующие значения из объекта мага.
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
   wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
@@ -67,6 +67,7 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
+// Берём массив магов, формируем карточку и добавляем её в целевой блок.
 var fragment = document.createDocumentFragment();
 var wizards = getWizardsArray(4);
 for (var i = 0; i < wizards.length; i++) {
