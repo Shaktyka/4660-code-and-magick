@@ -1,8 +1,8 @@
 'use strict';
 
-var setup = document.querySelector('div.setup');
+var userDialog = document.querySelector('.setup');
 
-setup.classList.remove('hidden');
+userDialog.classList.remove('hidden');
 
 var names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 
@@ -52,4 +52,28 @@ var getWizardsArray = function (num) {
   }
   return wizardsArray;
 };
-getWizardsArray(4);
+
+// Генерация списка волшебников
+// Находим блок, куда будем вставлять сгенерированный список
+var similarListElement = userDialog.querySelector('.setup-similar-list');
+
+// Находим шаблон, который будем использовать для генерации волшебника
+var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+
+var renderWizard = function (wizard) {
+  var wizardElement = similarWizardTemplate.cloneNode(true);
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
+  return wizardElement;
+};
+
+var fragment = document.createDocumentFragment();
+var wizards = getWizardsArray(4);
+for (var i = 0; i < wizards.length; i++) {
+  fragment.appendChild(renderWizard(wizards[i]));
+}
+similarListElement.appendChild(fragment);
+
+// Убираем класс hidden у блока для похожих магов
+userDialog.querySelector('.setup-similar').classList.remove('hidden');
