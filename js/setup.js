@@ -39,6 +39,7 @@ var getWizObject = function () {
     coatColor: getRandElem(coatColor),
     eyesColor: getRandElem(eyesColor)
   };
+  console.log(wizObj);
   return wizObj;
 };
 
@@ -46,10 +47,11 @@ var getWizObject = function () {
 
 var getWizardsArray = function (num) {
   var wizardsArray = [];
-  for (var i = 0; i < num - 1; i++) {
+  for (var i = 0; i < num; i++) {
     wizardsArray[i] = getWizObject();
     wizardsArray.push(wizardsArray[i]);
   }
+  console.log(wizardsArray);
   return wizardsArray;
 };
 
