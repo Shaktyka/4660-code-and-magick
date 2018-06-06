@@ -39,7 +39,6 @@ var getWizObject = function () {
     coatColor: getRandElem(coatColor),
     eyesColor: getRandElem(eyesColor)
   };
-  console.log(wizObj);
   return wizObj;
 };
 
@@ -48,10 +47,8 @@ var getWizObject = function () {
 var getWizardsArray = function (num) {
   var wizardsArray = [];
   for (var i = 0; i < num; i++) {
-    wizardsArray[i] = getWizObject();
-    wizardsArray.push(wizardsArray[i]);
+    wizardsArray.push(getWizObject());
   }
-  console.log(wizardsArray);
   return wizardsArray;
 };
 
@@ -72,7 +69,7 @@ var renderWizard = function (wizard) {
 
 var fragment = document.createDocumentFragment();
 var wizards = getWizardsArray(4);
-for (var i = 0; i < wizards.length - 1; i++) {
+for (var i = 0; i < wizards.length; i++) {
   fragment.appendChild(renderWizard(wizards[i]));
 }
 similarListElement.appendChild(fragment);
