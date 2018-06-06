@@ -4,50 +4,50 @@ var userDialog = document.querySelector('.setup');
 
 userDialog.classList.remove('hidden');
 
-var names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 
-var fornames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+var WIZARD_FORNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 
-var coatColor = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 
-var eyesColor = ['black', 'red', 'blue', 'yellow', 'green'];
+var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 
 // Функция, которая выбирает рандомный элемент из любого переданного ей массива
-var getRandElem = function (massiveName) {
-  var randElem = Math.floor(Math.random() * massiveName.length);
-  return massiveName[randElem];
+var getRandomElement = function (arrayName) {
+  var randomElement = Math.floor(Math.random() * arrayName.length);
+  return arrayName[randomElement];
 };
 
 // Функция, которая формирует имя мага из имени и фамилии, причём есть возможность поменять местами имя и фамилию
 
-var getWizardName = function (wizNames, wizFornames, isDirect) {
-  var wizardName;
-  var wizName = getRandElem(wizNames);
-  var wizForname = getRandElem(wizFornames);
+var getWizardName = function (wizardName, wizardForname, isDirect) {
+  var wizardFullName;
+  var NameOfWizard = getRandomElement(wizardName);
+  var FornameOfWizard = getRandomElement(wizardForname);
   if (isDirect) {
-    wizardName = wizName + ' ' + wizForname;
+    wizardFullName = NameOfWizard + ' ' + FornameOfWizard;
   } else {
-    wizardName = wizForname + ' ' + wizName;
+    wizardFullName = FornameOfWizard + ' ' + NameOfWizard;
   }
-  return wizardName;
+  return wizardFullName;
 };
 
 // Функция, возвращающая объект собранного рандомно мага
-var getWizObject = function () {
-  var wizObj = {
-    name: getWizardName(names, fornames, true),
-    coatColor: getRandElem(coatColor),
-    eyesColor: getRandElem(eyesColor)
+var getWizardObject = function () {
+  var wizardObject = {
+    name: getWizardName(WIZARD_NAMES, WIZARD_FORNAMES, true),
+    coatColor: getRandomElement(coatColors),
+    eyesColor: getRandomElement(eyesColors)
   };
-  return wizObj;
+  return wizardObject;
 };
 
 // Функция, возвращающая массив из х объектов магов
 
-var getWizardsArray = function (num) {
+var getWizardsArray = function (number) {
   var wizardsArray = [];
-  for (var i = 0; i < num; i++) {
-    wizardsArray.push(getWizObject());
+  for (var i = 0; i < number; i++) {
+    wizardsArray.push(getWizardObject());
   }
   return wizardsArray;
 };
