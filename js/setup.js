@@ -1,8 +1,10 @@
 'use strict';
 
+var setupOpen = document.querySelector('.setup-open');
+
 var userDialog = document.querySelector('.setup');
 
-userDialog.classList.remove('hidden');
+// Массивы значений для элементов мага
 
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 
@@ -79,3 +81,9 @@ similarListElement.appendChild(fragment);
 
 // Убираем класс hidden у блока для похожих магов
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+// Реализация открытия-закрытия окна настройки персонажа
+
+setupOpen.addEventListener('click', function() {
+  userDialog.classList.remove('hidden');
+});
