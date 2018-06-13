@@ -124,6 +124,46 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
+
+// Находим блок, в котором лежат настраиваемые элементы мага и скрытые поля
+
+var setupPlayer = userDialog.querySelector('.setup-player');
+
+var wizardCoat = setupPlayer.querySelector('.wizard-coat');
+
+var coatColorInput = setupPlayer.getElementsByName('coat-color');
+
+var wizardEyes = setupPlayer.querySelector('.wizard-eyes');
+
+var eyesColorInput = setupPlayer.getElementsByName('eyes-color');
+
+var setupFireball = setupPlayer.querySelector('.setup-fireball');
+
+var fireballColorInput = setupPlayer.getElementsByName('fireball-color');
+
+// Изменение цвета мантии мага при нажатии
+// массив COAT_COLORS
+// Нажатие на элемент wizardCoat приводит к рандомной смене цвета мантии
+// Также нужно записать соотв-щее значение в скрытое поле. 
+
+// Описание функции по записи цвета 
+// 1) в мантию,
+// 2) в скрытое поле.
+
+var wizardCoatClickHandler = function () {
+  var coatColor = getRandomElement(COAT_COLORS);
+  wizardCoat.style.fill = coatColor;
+};
+
+wizardCoat.addEventListener('click', wizardCoatClickHandler);
+
+// Изменение цвета глаз мага при нажатии
+// массив EYES_COLORS
+
+// Изменение цвета файербола мага при нажатии
+// массив FIREBALL_COLORS
+
+// Назначение соотвествующих текстов сообщений пользователю при невалидном вводе
 userNameInput.addEventListener('invalid', function (evt) {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2 символов');
