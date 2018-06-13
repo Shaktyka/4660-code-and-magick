@@ -3,6 +3,7 @@
 var userDialog = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = userDialog.querySelector('.setup-close');
+var userNameInput = userDialog.querySelector('.setup-user-name');
 
 // Массивы значений для элементов мага
 
@@ -84,10 +85,22 @@ userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
 // Реализация открытия-закрытия окна настройки персонажа
 
-setupOpen.addEventListener('click', function() {
+setupOpen.addEventListener('click', function () {
   userDialog.classList.remove('hidden');
 });
 
-setupClose.addEventListener('click', function() {
+setupClose.addEventListener('click', function () {
   userDialog.classList.add('hidden');
+});
+
+userNameInput.addEventListener('invalid', function (evt) {
+  if (userNameInput.validity.tooShort) {
+    userNameInput.setCustomValidity('Имя должно состоять минимум из 2 символов');
+  } else if (userNameInput.validity.tooLong) {
+    userNameInput.setCustomValidity('Имя не должно превышать 25 символов');
+  } else if (userNameInput.validity.valueMissing) {
+    userNameInput.setCustomValidity('Обязательное поле');
+  } else {
+    userNameInput.setCustomValidity('');
+  }
 });
