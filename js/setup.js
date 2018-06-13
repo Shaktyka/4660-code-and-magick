@@ -87,10 +87,28 @@ userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
 setupOpen.addEventListener('click', function () {
   userDialog.classList.remove('hidden');
+  
+  document.addEventListener('keydown', function(evt) {
+    if (evt.keyCode === 27) {
+      userDialog.classList.add('hidden');
+    }
+  }); 
+});
+
+setupOpen.addEventListener('keydown', function(evt) {
+  if (evt.keyCode === 13) {
+    userDialog.classList.remove('hidden');  
+  }
 });
 
 setupClose.addEventListener('click', function () {
   userDialog.classList.add('hidden');
+});
+
+setupClose.addEventListener('keydown', function(evt) {
+  if (evt.keyCode === 13) {
+    userDialog.classList.add('hidden');  
+  }
 });
 
 userNameInput.addEventListener('invalid', function (evt) {
