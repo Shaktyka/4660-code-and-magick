@@ -1,8 +1,8 @@
 'use strict';
 
-var setupOpen = document.querySelector('.setup-open');
-
 var userDialog = document.querySelector('.setup');
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = userDialog.querySelector('.setup-close');
 
 // Массивы значений для элементов мага
 
@@ -86,4 +86,8 @@ userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
 setupOpen.addEventListener('click', function() {
   userDialog.classList.remove('hidden');
+});
+
+setupClose.addEventListener('click', function() {
+  userDialog.classList.add('hidden');
 });
