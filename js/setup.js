@@ -131,15 +131,15 @@ var setupPlayer = userDialog.querySelector('.setup-player');
 
 var wizardCoat = setupPlayer.querySelector('.wizard-coat');
 
-var coatColorInput = setupPlayer.getElementsByName('coat-color');
+var coatColorInput = document.getElementById('#coat-color');
 
 var wizardEyes = setupPlayer.querySelector('.wizard-eyes');
 
-var eyesColorInput = setupPlayer.getElementsByName('eyes-color');
+var eyesColorInput = setupPlayer.querySelector('input')[1];
 
-var setupFireball = setupPlayer.querySelector('.setup-fireball');
+var setupFireball = setupPlayer.querySelector('.setup-fireball-wrap');
 
-var fireballColorInput = setupPlayer.getElementsByName('fireball-color');
+var fireballColorInput = setupPlayer.querySelector('input')[2];
 
 // Изменение цвета мантии мага при нажатии
 // массив COAT_COLORS
@@ -152,7 +152,9 @@ var fireballColorInput = setupPlayer.getElementsByName('fireball-color');
 
 var wizardCoatClickHandler = function () {
   var coatColor = getRandomElement(COAT_COLORS);
+  console.log(coatColor);
   wizardCoat.style.fill = coatColor;
+  coatColorInput.value = coatColor;
 };
 
 wizardCoat.addEventListener('click', wizardCoatClickHandler);
@@ -160,8 +162,22 @@ wizardCoat.addEventListener('click', wizardCoatClickHandler);
 // Изменение цвета глаз мага при нажатии
 // массив EYES_COLORS
 
+var wizardEyesClickHandler = function () {
+  var eyesColor = getRandomElement(EYES_COLORS);
+  eyesColorInput.value = eyesColor;
+};
+
+wizardEyes.addEventListener('click', wizardEyesClickHandler);
+
 // Изменение цвета файербола мага при нажатии
 // массив FIREBALL_COLORS
+
+var wizardFireballClickHandler = function () {
+  var fireballColor = getRandomElement(FIREBALL_COLORS);
+  setupFireball.style.backgroundColor = fireballColor;
+}
+
+setupFireball.addEventListener('click', wizardFireballClickHandler);
 
 // Назначение соотвествующих текстов сообщений пользователю при невалидном вводе
 userNameInput.addEventListener('invalid', function (evt) {
