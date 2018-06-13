@@ -1,5 +1,8 @@
 'use strict';
 
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
+
 var userDialog = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = userDialog.querySelector('.setup-close');
@@ -85,29 +88,39 @@ userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
 // Реализация открытия-закрытия окна настройки персонажа
 
-setupOpen.addEventListener('click', function () {
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+};
+
+var openPopup = function () {
   userDialog.classList.remove('hidden');
-  
-  document.addEventListener('keydown', function(evt) {
-    if (evt.keyCode === 27) {
-      userDialog.classList.add('hidden');
-    }
-  }); 
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  userDialog.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
 });
 
-setupOpen.addEventListener('keydown', function(evt) {
-  if (evt.keyCode === 13) {
-    userDialog.classList.remove('hidden');  
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
   }
 });
 
 setupClose.addEventListener('click', function () {
-  userDialog.classList.add('hidden');
+  closePopup();
 });
 
-setupClose.addEventListener('keydown', function(evt) {
-  if (evt.keyCode === 13) {
-    userDialog.classList.add('hidden');  
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
   }
 });
 
