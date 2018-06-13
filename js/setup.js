@@ -3,8 +3,13 @@
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 
+// Окно-попап с настройками персонажа
+
 var userDialog = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
+
+// Кнопка для закрытия окна настроек персонажа
+
 var setupClose = userDialog.querySelector('.setup-close');
 var userNameInput = userDialog.querySelector('.setup-user-name');
 
@@ -86,7 +91,7 @@ similarListElement.appendChild(fragment);
 // Убираем класс hidden у блока для похожих магов
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
-// Реализация открытия-закрытия окна настройки персонажа
+// Реализация открытия-закрытия окна с настройками персонажа
 
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
@@ -125,62 +130,54 @@ setupClose.addEventListener('keydown', function (evt) {
 });
 
 
-// Находим блок, в котором лежат настраиваемые элементы мага и скрытые поля
+// Находим в разметке нужные элементы: настраиваемые элементы мага и скрытые поля
 
 var setupPlayer = userDialog.querySelector('.setup-player');
 
 var wizardCoat = setupPlayer.querySelector('.wizard-coat');
 
-var coatColorInput = document.getElementById('#coat-color');
+var coatColorInput = document.getElementById('coat-color');
 
 var wizardEyes = setupPlayer.querySelector('.wizard-eyes');
 
-var eyesColorInput = setupPlayer.querySelector('input')[1];
+var eyesColorInput = document.getElementById('eyes-color');
 
 var setupFireball = setupPlayer.querySelector('.setup-fireball-wrap');
 
-var fireballColorInput = setupPlayer.querySelector('input')[2];
+var fireballColorInput = document.getElementById('fireball-color');
 
-// Изменение цвета мантии мага при нажатии
-// массив COAT_COLORS
-// Нажатие на элемент wizardCoat приводит к рандомной смене цвета мантии
-// Также нужно записать соотв-щее значение в скрытое поле. 
-
-// Описание функции по записи цвета 
-// 1) в мантию,
-// 2) в скрытое поле.
+// Функция для изменения цвета мантии при нажатии
 
 var wizardCoatClickHandler = function () {
   var coatColor = getRandomElement(COAT_COLORS);
-  console.log(coatColor);
   wizardCoat.style.fill = coatColor;
   coatColorInput.value = coatColor;
 };
 
 wizardCoat.addEventListener('click', wizardCoatClickHandler);
 
-// Изменение цвета глаз мага при нажатии
-// массив EYES_COLORS
+// Функция для изменения цвета глаз при нажатии
 
 var wizardEyesClickHandler = function () {
   var eyesColor = getRandomElement(EYES_COLORS);
+  wizardEyes.style.fill = eyesColor;
   eyesColorInput.value = eyesColor;
 };
 
 wizardEyes.addEventListener('click', wizardEyesClickHandler);
 
-// Изменение цвета файербола мага при нажатии
-// массив FIREBALL_COLORS
+// Функция для изменения цвета файербола при нажатии
 
 var wizardFireballClickHandler = function () {
   var fireballColor = getRandomElement(FIREBALL_COLORS);
   setupFireball.style.backgroundColor = fireballColor;
-}
+  fireballColorInput.value = fireballColor;
+};
 
 setupFireball.addEventListener('click', wizardFireballClickHandler);
 
 // Назначение соотвествующих текстов сообщений пользователю при невалидном вводе
-userNameInput.addEventListener('invalid', function (evt) {
+userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2 символов');
   } else if (userNameInput.validity.tooLong) {
