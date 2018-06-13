@@ -12,6 +12,8 @@ var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161
 
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
+var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+
 // Функция, которая выбирает рандомный элемент из любого переданного ей массива.
 var getRandomElement = function (array) {
   var randomElement = Math.floor(Math.random() * array.length);
