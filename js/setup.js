@@ -1,8 +1,19 @@
 'use strict';
 
-var userDialog = document.querySelector('.setup');
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
 
-userDialog.classList.remove('hidden');
+// Окно-попап с настройками персонажа
+
+var userDialog = document.querySelector('.setup');
+var setupOpen = document.querySelector('.setup-open');
+
+// Кнопка для закрытия окна настроек персонажа
+
+var setupClose = userDialog.querySelector('.setup-close');
+var userNameInput = userDialog.querySelector('.setup-user-name');
+
+// Массивы значений для элементов мага
 
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 
@@ -11,6 +22,8 @@ var WIZARD_FORNAMES = ['да Марья', 'Верон', 'Мирабелла', '�
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+
+var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 // Функция, которая выбирает рандомный элемент из любого переданного ей массива.
 var getRandomElement = function (array) {
@@ -77,3 +90,101 @@ similarListElement.appendChild(fragment);
 
 // Убираем класс hidden у блока для похожих магов
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+// Реализация открытия-закрытия окна с настройками персонажа
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+};
+
+var openPopup = function () {
+  userDialog.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  userDialog.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+
+// Находим в разметке нужные элементы: настраиваемые элементы мага и скрытые поля
+
+var setupPlayer = userDialog.querySelector('.setup-player');
+
+var wizardCoat = setupPlayer.querySelector('.wizard-coat');
+
+var coatColorInput = document.getElementById('coat-color');
+
+var wizardEyes = setupPlayer.querySelector('.wizard-eyes');
+
+var eyesColorInput = document.getElementById('eyes-color');
+
+var setupFireball = setupPlayer.querySelector('.setup-fireball-wrap');
+
+var fireballColorInput = document.getElementById('fireball-color');
+
+// Функция для изменения цвета мантии при нажатии
+
+var wizardCoatClickHandler = function () {
+  var coatColor = getRandomElement(COAT_COLORS);
+  wizardCoat.style.fill = coatColor;
+  coatColorInput.value = coatColor;
+};
+
+wizardCoat.addEventListener('click', wizardCoatClickHandler);
+
+// Функция для изменения цвета глаз при нажатии
+
+var wizardEyesClickHandler = function () {
+  var eyesColor = getRandomElement(EYES_COLORS);
+  wizardEyes.style.fill = eyesColor;
+  eyesColorInput.value = eyesColor;
+};
+
+wizardEyes.addEventListener('click', wizardEyesClickHandler);
+
+// Функция для изменения цвета файербола при нажатии
+
+var wizardFireballClickHandler = function () {
+  var fireballColor = getRandomElement(FIREBALL_COLORS);
+  setupFireball.style.backgroundColor = fireballColor;
+  fireballColorInput.value = fireballColor;
+};
+
+setupFireball.addEventListener('click', wizardFireballClickHandler);
+
+// Назначение соотвествующих текстов сообщений пользователю при невалидном вводе
+userNameInput.addEventListener('invalid', function () {
+  if (userNameInput.validity.tooShort) {
+    userNameInput.setCustomValidity('Имя должно состоять минимум из 2 символов');
+  } else if (userNameInput.validity.tooLong) {
+    userNameInput.setCustomValidity('Имя не должно превышать 25 символов');
+  } else if (userNameInput.validity.valueMissing) {
+    userNameInput.setCustomValidity('Обязательное поле');
+  } else {
+    userNameInput.setCustomValidity('');
+  }
+});
