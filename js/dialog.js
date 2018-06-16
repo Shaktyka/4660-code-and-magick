@@ -3,24 +3,26 @@
 var setup = document.querySelector('.setup');
 
 // Находим то, что будем перетаскивать
-var dialogHandle = setup.querySelector('.setup-user-pic');
+var dialogHandler = setup.querySelector('.setup-user-pic');
 
 // Добавляем обработчик 1 фазы события - mousdown
-dialogHandle.addEventListener('mousedown', function (evt) {
+dialogHandler.addEventListener('mousedown', function (evt) {
   evt.preventDefault();
   // Записываем стартовые координаты
   var startCoordinates = {
     x: evt.clientX,
     y: evt.clientY
   };
+  var dragged = false;
   // При каждом движении мыши обновляем смещение относительно первоначальной точки
   var mouseMoveHandler = function (moveEvt) {
     moveEvt.preventDefault();
+    dragged = true;
     var shift = {
       x: startCoordinates.x - moveEvt.clientX,
       y: startCoordinates.y - moveEvt.clientY
     };
-    var startCoordinates = {
+    startCoordinates = {
       x: moveEvt.clientX,
       y: moveEvt.clientY
     };
@@ -33,6 +35,13 @@ dialogHandle.addEventListener('mousedown', function (evt) {
     document.removeEventListener('mousemove', mouseMoveHandler);
     document.removeEventListener('mouseup', mouseUpHandler);
   };
+  if (dragged) {
+    var onClickPreventDefault = function (prevEvt) {
+      prevEvt.preventDefault();
+      dialogHandler.removeEventListener('click', onClickPreventDefault);
+    };
+    dialogHandler.addEventListener('click', onClickPreventDefault);
+  }
   // Добавляем обработчики событий на движение мыши и на отжатие кнопки мыши
   document.addEventListener('mousemove', mouseMoveHandler);
   document.addEventListener('mouseup', mouseUpHandler);
