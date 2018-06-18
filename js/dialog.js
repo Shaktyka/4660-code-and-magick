@@ -1,9 +1,9 @@
 'use strict';
 
-var setup = document.querySelector('.setup');
+var userDialog = document.querySelector('.setup');
 
 // Находим то, что будем перетаскивать
-var dialogHandler = setup.querySelector('.setup-user-pic');
+var dialogHandler = userDialog.querySelector('.setup input');
 
 // Добавляем обработчик 1 фазы события - mousdown
 dialogHandler.addEventListener('mousedown', function (evt) {
@@ -26,8 +26,8 @@ dialogHandler.addEventListener('mousedown', function (evt) {
       x: moveEvt.clientX,
       y: moveEvt.clientY
     };
-    setup.style.top = (setup.offsetTop - shift.y) + 'px';
-    setup.style.left = (setup.offsetLeft - shift.x) + 'px';
+    userDialog.style.top = (userDialog.offsetTop - shift.y) + 'px';
+    userDialog.style.left = (userDialog.offsetLeft - shift.x) + 'px';
   };
   // При отжатии кнопки мыши перестаём слушать перемещение курсора
   var mouseUpHandler = function (upEvt) {
