@@ -9,6 +9,8 @@
   var BAR_WIDTH = 40;
   var BAR_GAP = 50;
   var MAX_HIST_HEIGHT = 150;
+  var TEXT_X = 310;
+  var TEXT_Y = 30;
 
   // ОТРИСОВКА САМОГО ОКНА
 
@@ -62,16 +64,15 @@
     ctx.font = '16px PT Mono';
     ctx.textBaseline = 'hanging';
     ctx.textAlign = 'center';
-    ctx.fillText('Ура, вы победили!', 310, 30);
-    ctx.fillText('Список результатов:', 310, 50);
+    ctx.fillText('Ура, вы победили!', TEXT_X, TEXT_Y);
+    ctx.fillText('Список результатов:', TEXT_X, TEXT_Y + 20);
 
     // Гистограмма
     ctx.textAlign = 'left';
     ctx.textBaseline = 'baseline';
     ctx.font = '16px PT Mono';
     var maxTime = getMaxElement(times);
-
-    // Отрисовка имён и столбиков
+    // Отрисовка имён и столбиков гистограммы
     for (var i = 0; i < names.length; i++) {
       var cloudBottom = CLOUD_Y + CLOUD_HEIGHT;
       ctx.fillStyle = '#000000';
