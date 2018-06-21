@@ -91,7 +91,13 @@ similarListElement.appendChild(fragment);
 // Убираем класс hidden у блока для похожих магов
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
-// Реализация открытия-закрытия окна с настройками персонажа
+// ОТКРЫТИЕ-ЗАКРЫТИЕ ОКНА НАСТРОЕК
+
+// Стартовые координаты окна
+var startCoords = {
+  x: userDialog.style.top,
+  y: userDialog.style.left
+};
 
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
@@ -100,6 +106,8 @@ var onPopupEscPress = function (evt) {
 };
 
 var openPopup = function () {
+  userDialog.style.top = startCoords.y;
+  userDialog.style.left = startCoords.x;
   userDialog.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
 };

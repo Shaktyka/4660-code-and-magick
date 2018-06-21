@@ -8,11 +8,13 @@ var dialogHandler = userDialog.querySelector('.setup input');
 // Добавляем обработчик 1 фазы события - mousdown
 dialogHandler.addEventListener('mousedown', function (evt) {
   evt.preventDefault();
+
   // Записываем стартовые координаты
   var startCoordinates = {
     x: evt.clientX,
     y: evt.clientY
   };
+
   var dragged = false;
   // При каждом движении мыши обновляем смещение относительно первоначальной точки
   var mouseMoveHandler = function (moveEvt) {
