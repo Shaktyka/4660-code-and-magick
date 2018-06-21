@@ -20,6 +20,7 @@ dialogHandler.addEventListener('mousedown', function (evt) {
   var mouseMoveHandler = function (moveEvt) {
     moveEvt.preventDefault();
     dragged = true;
+
     var shift = {
       x: startCoordinates.x - moveEvt.clientX,
       y: startCoordinates.y - moveEvt.clientY
@@ -31,19 +32,21 @@ dialogHandler.addEventListener('mousedown', function (evt) {
     userDialog.style.top = (userDialog.offsetTop - shift.y) + 'px';
     userDialog.style.left = (userDialog.offsetLeft - shift.x) + 'px';
   };
-  // При отжатии кнопки мыши перестаём слушать перемещение курсора
+
+  // При отжатии кнопки мыши
   var mouseUpHandler = function (upEvt) {
     upEvt.preventDefault();
     document.removeEventListener('mousemove', mouseMoveHandler);
     document.removeEventListener('mouseup', mouseUpHandler);
+    if (dragged) {
+      var onClickPreventDefault = function (preEvt) {
+        preEvt.preventDefault();
+        dialogHandler.removeEventListener('click', onClickPreventDefault);
+      };
+      dialogHandler.addEventListener('click', onClickPreventDefault);
+    }
   };
-  if (dragged) {
-    var onClickPreventDefault = function (preEvt) {
-      preEvt.preventDefault();
-      dialogHandler.removeEventListener('click', onClickPreventDefault);
-    };
-    dialogHandler.addEventListener('click', onClickPreventDefault);
-  }
+
   // Добавляем обработчики событий на движение мыши и на отжатие кнопки мыши
   document.addEventListener('mousemove', mouseMoveHandler);
   document.addEventListener('mouseup', mouseUpHandler);
