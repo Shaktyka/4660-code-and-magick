@@ -3,15 +3,7 @@
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 
-// Окно-попап с настройками персонажа
-
-var userDialog = document.querySelector('.setup');
-var setupOpen = document.querySelector('.setup-open');
-
-// Кнопка для закрытия окна настроек персонажа
-
-var setupClose = userDialog.querySelector('.setup-close');
-var userNameInput = userDialog.querySelector('.setup-user-name');
+// ГЕНЕРАЦИЯ ОДНОГО МАГА
 
 // Массивы значений для элементов мага
 
@@ -24,6 +16,8 @@ var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+
+// СЛУЖЕБНАЯ ФУНКЦИЯ
 
 // Функция, которая выбирает рандомный элемент из любого переданного ей массива.
 var getRandomElement = function (array) {
@@ -54,6 +48,8 @@ var getWizardObject = function () {
   return wizardObject;
 };
 
+// ГЕНЕРАЦИЯ СПИСКА ВОЛШЕБНИКОВ
+
 // Функция, возвращающая массив из х объектов магов.
 
 var getWizardsArray = function (number) {
@@ -64,7 +60,6 @@ var getWizardsArray = function (number) {
   return wizardsArray;
 };
 
-// Генерация списка волшебников
 // Находим блок, куда будем вставлять сгенерированный список.
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
@@ -92,6 +87,16 @@ similarListElement.appendChild(fragment);
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
 // ОТКРЫТИЕ-ЗАКРЫТИЕ ОКНА НАСТРОЕК
+
+// Окно-попап с настройками персонажа
+
+var userDialog = document.querySelector('.setup');
+var setupOpen = document.querySelector('.setup-open');
+
+// Кнопка для закрытия окна настроек персонажа
+
+var setupClose = userDialog.querySelector('.setup-close');
+var userNameInput = userDialog.querySelector('.setup-user-name');
 
 // Стартовые координаты окна
 var startCoords = {
@@ -137,6 +142,7 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
+// НАСТРОЙКА ВНЕШНЕГО ВИДА МАГА
 
 // Находим в разметке нужные элементы: настраиваемые элементы мага и скрытые поля
 
@@ -183,6 +189,8 @@ var wizardFireballClickHandler = function () {
 };
 
 setupFireball.addEventListener('click', wizardFireballClickHandler);
+
+// ОБРАБОТКА НЕВАЛИДНОГО ВВОДА ИМЕНИ В ОКНЕ ПЕРСОНАЖА
 
 // Назначение соотвествующих текстов сообщений пользователю при невалидном вводе
 userNameInput.addEventListener('invalid', function () {
