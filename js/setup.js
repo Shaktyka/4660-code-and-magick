@@ -15,12 +15,6 @@
 
   var userDialog = document.querySelector('.setup');
 
-  // Функция, которая выбирает рандомный элемент из любого переданного ей массива.
-  var getRandomElement = function (array) {
-    var randomElement = Math.floor(Math.random() * array.length);
-    return array[randomElement];
-  };
-
   // Функция, которая формирует имя мага из имени и фамилии, причём есть возможность поменять местами имя и фамилию.
   var getWizardName = function (wizardName, wizardForname, isDirect) {
     var wizardFullName;
