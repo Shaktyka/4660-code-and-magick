@@ -1,5 +1,7 @@
 'use strict';
 
+// ВСТАВКА МАГОВ В ЦЕЛЕВОЙ БЛОК
+
 (function () {
   var userDialog = document.querySelector('.setup');
 

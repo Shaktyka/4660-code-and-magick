@@ -46,8 +46,11 @@
 
   // Функция генерации рандомного синего цвета
   var getBarColor = function () {
-    // генерируем случайное число от 10 до 150, это синий диапазон
-    var ran = Math.abs(Math.floor(Math.random() * (10 - 150) + 10));
+    var BLUE_MIN = 10;
+    var BLUE_MAX = 150;
+    var COLOR_STEP = 10;
+    // генерируем случайное число от 10 до 150 (синий диапазон)
+    var ran = Math.abs(Math.floor(Math.random() * (BLUE_MIN - BLUE_MAX) + COLOR_STEP));
     // формируем вывод цвета в нужном формате rgba
     var color = 'rgba(' + ran + ', ' + ran + ', ' + '255, 1)';
     return color;

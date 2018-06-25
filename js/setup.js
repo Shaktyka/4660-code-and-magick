@@ -1,6 +1,6 @@
 'use strict';
 
-// ГЕНЕРАЦИЯ СПИСКА ПОХОЖИХ ВОЛШЕБНИКОВ
+// ГЕНЕРАЦИЯ ОДНОГО МАГА
 
 (function () {
   // Массивы значений для элементов мага
@@ -12,8 +12,6 @@
   var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 
   var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
-
-  var userDialog = document.querySelector('.setup');
 
   // Функция, которая формирует имя мага из имени и фамилии, причём есть возможность поменять местами имя и фамилию.
   var getWizardName = function (wizardName, wizardForname, isDirect) {
@@ -46,9 +44,6 @@
     }
     return wizardsArray;
   };
-
-  // Находим блок, куда будем вставлять сгенерированный список.
-  window.similarListElement = userDialog.querySelector('.setup-similar-list');
 
   // Клонируем шаблон мага, назначаем элементам соответствующие значения из объекта мага.
   window.renderWizard = function (wizard) {
