@@ -3,6 +3,8 @@
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 
+var userDialog = document.querySelector('.setup');
+
 // ГЕНЕРАЦИЯ ОДНОГО МАГА
 
 // Массивы значений для элементов мага
@@ -16,8 +18,6 @@ var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-
-// СЛУЖЕБНАЯ ФУНКЦИЯ
 
 // Функция, которая выбирает рандомный элемент из любого переданного ей массива.
 var getRandomElement = function (array) {
@@ -90,13 +90,12 @@ userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
 // Окно-попап с настройками персонажа
 
-var userDialog = document.querySelector('.setup');
+// var userDialog = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 
 // Кнопка для закрытия окна настроек персонажа
 
 var setupClose = userDialog.querySelector('.setup-close');
-var userNameInput = userDialog.querySelector('.setup-user-name');
 
 // Стартовые координаты окна
 var startCoords = {
@@ -189,18 +188,3 @@ var wizardFireballClickHandler = function () {
 };
 
 setupFireball.addEventListener('click', wizardFireballClickHandler);
-
-// ОБРАБОТКА НЕВАЛИДНОГО ВВОДА ИМЕНИ В ОКНЕ ПЕРСОНАЖА
-
-// Назначение соотвествующих текстов сообщений пользователю при невалидном вводе
-userNameInput.addEventListener('invalid', function () {
-  if (userNameInput.validity.tooShort) {
-    userNameInput.setCustomValidity('Имя должно состоять минимум из 2 символов');
-  } else if (userNameInput.validity.tooLong) {
-    userNameInput.setCustomValidity('Имя не должно превышать 25 символов');
-  } else if (userNameInput.validity.valueMissing) {
-    userNameInput.setCustomValidity('Обязательное поле');
-  } else {
-    userNameInput.setCustomValidity('');
-  }
-});

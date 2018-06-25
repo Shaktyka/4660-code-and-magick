@@ -1,6 +1,6 @@
 'use strict';
 
-// ПЕРЕТАСКИВАНИЕ ОКНА НАСТРОЕК ПЕРСОНАЖА
+// DRAG N DROP ОКНА НАСТРОЕК ПЕРСОНАЖА
 
 (function () {
   var userDialog = document.querySelector('.setup');
