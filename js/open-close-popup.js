@@ -2,8 +2,6 @@
 
 // ОТКРЫТИЕ-ЗАКРЫТИЕ ОКНА НАСТРОЕК
 
-// Окно настроек персонажа
-
 (function () {
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
