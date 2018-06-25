@@ -2,7 +2,7 @@
 
 (function () {
   // Функция, которая выбирает рандомный элемент из любого переданного ей массива.
-  var getRandomElement = function (array) {
+  window.getRandomElement = function (array) {
     var randomElement = Math.floor(Math.random() * array.length);
     return array[randomElement];
   };
