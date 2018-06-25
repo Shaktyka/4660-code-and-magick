@@ -27,16 +27,10 @@
 
   var fireballColorInput = document.getElementById('fireball-color');
 
-  // Функция, которая выбирает рандомный элемент из любого переданного ей массива.
-  var getRandomElement = function (array) {
-    var randomElement = Math.floor(Math.random() * array.length);
-    return array[randomElement];
-  };
-
   // Функция для изменения цвета мантии при нажатии
 
   var wizardCoatClickHandler = function () {
-    var coatColor = getRandomElement(COAT_COLORS);
+    var coatColor = window.getRandomElement(COAT_COLORS);
     wizardCoat.style.fill = coatColor;
     coatColorInput.value = coatColor;
   };
@@ -46,7 +40,7 @@
   // Функция для изменения цвета глаз при нажатии
 
   var wizardEyesClickHandler = function () {
-    var eyesColor = getRandomElement(EYES_COLORS);
+    var eyesColor = window.getRandomElement(EYES_COLORS);
     wizardEyes.style.fill = eyesColor;
     eyesColorInput.value = eyesColor;
   };
@@ -56,7 +50,7 @@
   // Функция для изменения цвета файербола при нажатии
 
   var wizardFireballClickHandler = function () {
-    var fireballColor = getRandomElement(FIREBALL_COLORS);
+    var fireballColor = window.getRandomElement(FIREBALL_COLORS);
     setupFireball.style.backgroundColor = fireballColor;
     fireballColorInput.value = fireballColor;
   };
