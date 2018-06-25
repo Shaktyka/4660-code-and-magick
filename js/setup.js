@@ -39,7 +39,7 @@
   };
 
   // Функция, возвращающая массив из х объектов магов.
-  var getWizardsArray = function (number) {
+  window.getWizardsArray = function (number) {
     var wizardsArray = [];
     for (var i = 0; i < number; i++) {
       wizardsArray.push(getWizardObject());
@@ -48,10 +48,10 @@
   };
 
   // Находим блок, куда будем вставлять сгенерированный список.
-  var similarListElement = userDialog.querySelector('.setup-similar-list');
+  window.similarListElement = userDialog.querySelector('.setup-similar-list');
 
   // Клонируем шаблон мага, назначаем элементам соответствующие значения из объекта мага.
-  var renderWizard = function (wizard) {
+  window.renderWizard = function (wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
     wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
     wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;

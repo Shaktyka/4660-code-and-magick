@@ -5,11 +5,11 @@
 
   // Берём массив магов, формируем карточку и добавляем её в целевой блок.
   var fragment = document.createDocumentFragment();
-  var wizards = getWizardsArray(4);
+  var wizards = window.getWizardsArray(4);
   for (var i = 0; i < wizards.length; i++) {
-    fragment.appendChild(renderWizard(wizards[i]));
+    fragment.appendChild(window.renderWizard(wizards[i]));
   }
-  similarListElement.appendChild(fragment);
+  window.similarListElement.appendChild(fragment);
 
   // Убираем класс hidden у блока для похожих магов
   userDialog.querySelector('.setup-similar').classList.remove('hidden');
