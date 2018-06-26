@@ -6,9 +6,9 @@
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
 
-  var setupOpen = document.querySelector('.setup-open');
+  // Кнопки открытия и закрытия окна настроек персонажа
 
-  // Кнопка для закрытия окна настроек персонажа
+  var setupOpen = document.querySelector('.setup-open');
 
   var setupClose = window.userDialog.querySelector('.setup-close');
 
@@ -18,7 +18,8 @@
     y: window.userDialog.style.left
   };
 
-  var onPopupEscPress = function (evt) {
+  // Функция обраюотки клавиатурного события
+  var escKeydownHandler = function (evt) {
     if (evt.keyCode === ESC_KEYCODE) {
       closePopup();
     }
@@ -28,12 +29,12 @@
     window.userDialog.style.top = startCoords.y;
     window.userDialog.style.left = startCoords.x;
     window.userDialog.classList.remove('hidden');
-    document.addEventListener('keydown', onPopupEscPress);
+    document.addEventListener('keydown', escKeydownHandler);
   };
 
   var closePopup = function () {
     window.userDialog.classList.add('hidden');
-    document.removeEventListener('keydown', onPopupEscPress);
+    document.removeEventListener('keydown', escKeydownHandler);
   };
 
   setupOpen.addEventListener('click', function () {
