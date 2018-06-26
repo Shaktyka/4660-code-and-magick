@@ -25,7 +25,7 @@
   // Функция для изменения цвета мантии при нажатии
 
   var wizardCoatClickHandler = function () {
-    var coatColor = window.getRandomElement(window.COAT_COLORS);
+    var coatColor = window.util.getRandomElement(window.COAT_COLORS);
     wizardCoat.style.fill = coatColor;
     coatColorInput.value = coatColor;
   };
@@ -35,7 +35,7 @@
   // Функция для изменения цвета глаз при нажатии
 
   var wizardEyesClickHandler = function () {
-    var eyesColor = window.getRandomElement(window.EYES_COLORS);
+    var eyesColor = window.util.getRandomElement(window.EYES_COLORS);
     wizardEyes.style.fill = eyesColor;
     eyesColorInput.value = eyesColor;
   };
@@ -45,7 +45,7 @@
   // Функция для изменения цвета файербола при нажатии
 
   var wizardFireballClickHandler = function () {
-    var fireballColor = window.getRandomElement(FIREBALL_COLORS);
+    var fireballColor = window.util.getRandomElement(FIREBALL_COLORS);
     setupFireball.style.backgroundColor = fireballColor;
     fireballColorInput.value = fireballColor;
   };

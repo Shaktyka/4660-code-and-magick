@@ -3,8 +3,6 @@
 // ОТКРЫТИЕ-ЗАКРЫТИЕ ОКНА НАСТРОЕК
 
 (function () {
-  var ESC_KEYCODE = 27;
-  var ENTER_KEYCODE = 13;
 
   // Кнопки открытия и закрытия окна настроек персонажа
 
@@ -18,11 +16,9 @@
     y: window.userDialog.style.left
   };
 
-  // Функция обраюотки клавиатурного события
+  // Функция обработки клавиатурного события
   var escKeydownHandler = function (evt) {
-    if (evt.keyCode === ESC_KEYCODE) {
-      closePopup();
-    }
+    window.util.isEscEvent(evt, closePopup);
   };
 
   var openPopup = function () {
@@ -42,9 +38,7 @@
   });
 
   setupOpen.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
-      openPopup();
-    }
+    window.util.isEnterEvent(evt, openPopup);
   });
 
   setupClose.addEventListener('click', function () {
@@ -52,8 +46,6 @@
   });
 
   setupClose.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_KEYCODE) {
-      closePopup();
-    }
+    window.util.isEnterEvent(evt, closePopup);
   });
 })();

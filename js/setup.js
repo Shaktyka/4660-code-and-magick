@@ -18,8 +18,8 @@
   // Функция, которая формирует имя мага из имени и фамилии, причём есть возможность поменять местами имя и фамилию.
   var getWizardName = function (wizardName, wizardForname, isDirect) {
     var wizardFullName;
-    var nameOfWizard = window.getRandomElement(wizardName);
-    var fornameOfWizard = window.getRandomElement(wizardForname);
+    var nameOfWizard = window.util.getRandomElement(wizardName);
+    var fornameOfWizard = window.util.getRandomElement(wizardForname);
     if (isDirect) {
       wizardFullName = nameOfWizard + ' ' + fornameOfWizard;
     } else {
@@ -32,8 +32,8 @@
   var getWizardObject = function () {
     var wizardObject = {
       name: getWizardName(WIZARD_NAMES, WIZARD_FORNAMES, true),
-      coatColor: window.getRandomElement(window.COAT_COLORS),
-      eyesColor: window.getRandomElement(window.EYES_COLORS)
+      coatColor: window.util.getRandomElement(window.COAT_COLORS),
+      eyesColor: window.util.getRandomElement(window.EYES_COLORS)
     };
     return wizardObject;
   };
