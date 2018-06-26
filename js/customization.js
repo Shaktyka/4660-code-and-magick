@@ -11,9 +11,7 @@
 
   // Находим в разметке нужные элементы: настраиваемые элементы мага и скрытые поля
 
-  var userDialog = document.querySelector('.setup');
-
-  var setupPlayer = userDialog.querySelector('.setup-player');
+  var setupPlayer = window.userDialog.querySelector('.setup-player');
 
   var wizardCoat = setupPlayer.querySelector('.wizard-coat');
 

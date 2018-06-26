@@ -3,10 +3,9 @@
 // DRAG N DROP ОКНА НАСТРОЕК ПЕРСОНАЖА
 
 (function () {
-  var userDialog = document.querySelector('.setup');
 
   // Находим то, что будем перетаскивать
-  var dialogHandler = userDialog.querySelector('.setup input');
+  var dialogHandler = window.userDialog.querySelector('.setup input');
 
   // Добавляем обработчик 1 фазы события - mousdown
   dialogHandler.addEventListener('mousedown', function (evt) {
@@ -32,8 +31,8 @@
         x: moveEvt.clientX,
         y: moveEvt.clientY
       };
-      userDialog.style.top = (userDialog.offsetTop - shift.y) + 'px';
-      userDialog.style.left = (userDialog.offsetLeft - shift.x) + 'px';
+      window.userDialog.style.top = (window.userDialog.offsetTop - shift.y) + 'px';
+      window.userDialog.style.left = (window.userDialog.offsetLeft - shift.x) + 'px';
     };
 
     // При отжатии кнопки мыши

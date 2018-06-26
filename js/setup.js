@@ -13,7 +13,7 @@
 
   var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
-  var userDialog = document.querySelector('.setup');
+  window.userDialog = document.querySelector('.setup');
 
   // Функция, которая формирует имя мага из имени и фамилии, причём есть возможность поменять местами имя и фамилию.
   var getWizardName = function (wizardName, wizardForname, isDirect) {
@@ -60,7 +60,7 @@
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
   // Находим блок, куда будем вставлять сгенерированный список.
-  var similarListElement = userDialog.querySelector('.setup-similar-list');
+  var similarListElement = window.userDialog.querySelector('.setup-similar-list');
 
   // Берём массив магов, формируем карточку и добавляем её в целевой блок.
   var fragment = document.createDocumentFragment();
@@ -71,5 +71,5 @@
   similarListElement.appendChild(fragment);
 
   // Убираем класс hidden у блока для похожих магов
-  userDialog.querySelector('.setup-similar').classList.remove('hidden');
+  window.userDialog.querySelector('.setup-similar').classList.remove('hidden');
 })();

@@ -3,9 +3,7 @@
 // ОБРАБОТКА НЕВАЛИДНОГО ВВОДА ИМЕНИ В ОКНЕ ПЕРСОНАЖА
 
 (function () {
-  var userDialog = document.querySelector('.setup');
-
-  var userNameInput = userDialog.querySelector('.setup-user-name');
+  var userNameInput = window.userDialog.querySelector('.setup-user-name');
 
   userNameInput.addEventListener('invalid', function () {
     if (userNameInput.validity.tooShort) {
