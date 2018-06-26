@@ -3,11 +3,11 @@
 // НАСТРОЙКА ВНЕШНЕГО ВИДА МАГА
 
 (function () {
-  var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+  window.COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 
-  var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+  window.EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
-  var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+  window.FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
   // Находим в разметке нужные элементы: настраиваемые элементы мага и скрытые поля
 
@@ -28,7 +28,7 @@
   // Функция для изменения цвета мантии при нажатии
 
   var wizardCoatClickHandler = function () {
-    var coatColor = window.getRandomElement(COAT_COLORS);
+    var coatColor = window.getRandomElement(window.COAT_COLORS);
     wizardCoat.style.fill = coatColor;
     coatColorInput.value = coatColor;
   };
@@ -38,7 +38,7 @@
   // Функция для изменения цвета глаз при нажатии
 
   var wizardEyesClickHandler = function () {
-    var eyesColor = window.getRandomElement(EYES_COLORS);
+    var eyesColor = window.getRandomElement(window.EYES_COLORS);
     wizardEyes.style.fill = eyesColor;
     eyesColorInput.value = eyesColor;
   };
@@ -48,7 +48,7 @@
   // Функция для изменения цвета файербола при нажатии
 
   var wizardFireballClickHandler = function () {
-    var fireballColor = window.getRandomElement(FIREBALL_COLORS);
+    var fireballColor = window.getRandomElement(window.FIREBALL_COLORS);
     setupFireball.style.backgroundColor = fireballColor;
     fireballColorInput.value = fireballColor;
   };
