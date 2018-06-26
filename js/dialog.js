@@ -1,53 +1,56 @@
 'use strict';
 
-var userDialog = document.querySelector('.setup');
+// DRAG N DROP ОКНА НАСТРОЕК ПЕРСОНАЖА
 
-// Находим то, что будем перетаскивать
-var dialogHandler = userDialog.querySelector('.setup input');
+(function () {
 
-// Добавляем обработчик 1 фазы события - mousdown
-dialogHandler.addEventListener('mousedown', function (evt) {
-  evt.preventDefault();
+  // Находим то, что будем перетаскивать
+  var dialogHandler = window.userDialog.querySelector('.setup input');
 
-  // Записываем стартовые координаты
-  var startCoordinates = {
-    x: evt.clientX,
-    y: evt.clientY
-  };
+  // Добавляем обработчик 1 фазы события - mousdown
+  dialogHandler.addEventListener('mousedown', function (evt) {
+    evt.preventDefault();
 
-  var dragged = false;
-  // При каждом движении мыши обновляем смещение относительно первоначальной точки
-  var mouseMoveHandler = function (moveEvt) {
-    moveEvt.preventDefault();
-    dragged = true;
-
-    var shift = {
-      x: startCoordinates.x - moveEvt.clientX,
-      y: startCoordinates.y - moveEvt.clientY
+    // Записываем стартовые координаты
+    var startCoordinates = {
+      x: evt.clientX,
+      y: evt.clientY
     };
-    startCoordinates = {
-      x: moveEvt.clientX,
-      y: moveEvt.clientY
-    };
-    userDialog.style.top = (userDialog.offsetTop - shift.y) + 'px';
-    userDialog.style.left = (userDialog.offsetLeft - shift.x) + 'px';
-  };
 
-  // При отжатии кнопки мыши
-  var mouseUpHandler = function (upEvt) {
-    upEvt.preventDefault();
-    document.removeEventListener('mousemove', mouseMoveHandler);
-    document.removeEventListener('mouseup', mouseUpHandler);
-    if (dragged) {
-      var onClickPreventDefault = function (preEvt) {
-        preEvt.preventDefault();
-        dialogHandler.removeEventListener('click', onClickPreventDefault);
+    var dragged = false;
+    // При каждом движении мыши обновляем смещение относительно первоначальной точки
+    var mouseMoveHandler = function (moveEvt) {
+      moveEvt.preventDefault();
+      dragged = true;
+
+      var shift = {
+        x: startCoordinates.x - moveEvt.clientX,
+        y: startCoordinates.y - moveEvt.clientY
       };
-      dialogHandler.addEventListener('click', onClickPreventDefault);
-    }
-  };
+      startCoordinates = {
+        x: moveEvt.clientX,
+        y: moveEvt.clientY
+      };
+      window.userDialog.style.top = (window.userDialog.offsetTop - shift.y) + 'px';
+      window.userDialog.style.left = (window.userDialog.offsetLeft - shift.x) + 'px';
+    };
 
-  // Добавляем обработчики событий на движение мыши и на отжатие кнопки мыши
-  document.addEventListener('mousemove', mouseMoveHandler);
-  document.addEventListener('mouseup', mouseUpHandler);
-});
+    // При отжатии кнопки мыши
+    var mouseUpHandler = function (upEvt) {
+      upEvt.preventDefault();
+      document.removeEventListener('mousemove', mouseMoveHandler);
+      document.removeEventListener('mouseup', mouseUpHandler);
+      if (dragged) {
+        var onClickPreventDefault = function (preEvt) {
+          preEvt.preventDefault();
+          dialogHandler.removeEventListener('click', onClickPreventDefault);
+        };
+        dialogHandler.addEventListener('click', onClickPreventDefault);
+      }
+    };
+
+    // Добавляем обработчики событий на движение мыши и на отжатие кнопки мыши
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
+  });
+})();
