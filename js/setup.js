@@ -72,4 +72,12 @@
 
   // Убираем класс hidden у блока для похожих магов
   window.userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+  var form = window.userDialog.querySelector('.setup-wizard-form');
+  form.addEventListener('submit', function (evt) {
+    window.save(new FormData(form), function (response) {
+      window.userDialog.classList.add('hidden');
+    });
+    evt.preventDefault();
+  });
 })();
