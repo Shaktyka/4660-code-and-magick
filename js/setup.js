@@ -76,9 +76,9 @@
   // Формирование объекта FormData и закрытие окна после успешной отправки
   var form = window.userDialog.querySelector('.setup-wizard-form');
   form.addEventListener('submit', function (evt) {
+    evt.preventDefault();
     window.save(new FormData(form), function (response) {
       window.userDialog.classList.add('hidden');
     });
-    evt.preventDefault();
   });
 })();
