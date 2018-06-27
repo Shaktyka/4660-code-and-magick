@@ -7,7 +7,6 @@
     var SAVE_URL = 'https://js.dump.academy/code-and-magick';
 
     var xhr = new XMLHttpRequest();
-    console.log(xhr.response);
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', function () {
