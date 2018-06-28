@@ -52,8 +52,13 @@
   var form = window.userDialog.querySelector('.setup-wizard-form');
   form.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    window.save(new FormData(form), function () {
+    var formData = new FormData(form);
+
+    var saveHandler = function () {
       window.userDialog.classList.add('hidden');
-    });
+    };
+
+    window.save(formData, saveHandler, errorHandler);
+
   });
 })();
