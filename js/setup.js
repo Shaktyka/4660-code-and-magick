@@ -24,7 +24,7 @@
 
   // Добавляем магов в целевой блок.
 
-  window.load(function (wizards) {
+  var successHandler = function (wizards) {
     var fragment = document.createDocumentFragment();
     // var wizards = window.getWizardsArray(4);
     for (var i = 0; i < 4; i++) {
@@ -33,13 +33,27 @@
     similarListElement.appendChild(fragment);
 
     window.userDialog.querySelector('.setup-similar').classList.remove('hidden');
-  });
+  };
+
+  var errorHandler = function (errorMessage) {
+    var node = document.createElement('div');
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = '30px';
+
+    node.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', node);
+  };
+
+  window.load(successHandler, errorHandler);
 
   // Формирование объекта FormData и закрытие окна после успешной отправки
   var form = window.userDialog.querySelector('.setup-wizard-form');
   form.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    window.save(new FormData(form), function (response) {
+    window.save(new FormData(form), function () {
       window.userDialog.classList.add('hidden');
     });
   });
