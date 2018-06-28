@@ -26,7 +26,6 @@
 
   var successHandler = function (wizards) {
     var fragment = document.createDocumentFragment();
-    // var wizards = window.getWizardsArray(4);
     for (var i = 0; i < 4; i++) {
       fragment.appendChild(window.renderWizard(wizards[i]));
     }
