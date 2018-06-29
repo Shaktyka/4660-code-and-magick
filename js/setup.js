@@ -50,6 +50,10 @@
     window.node.addEventListener('click', function () {
       window.closeError();
     });
+
+    window.node.addEventListener('keydown', function (e) {
+      window.util.isEnterEvent(e, window.closeError);
+    });
   };
 
   window.load(successHandler, errorHandler);
