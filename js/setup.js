@@ -41,6 +41,10 @@
 
     node.textContent = errorMessage;
     document.body.insertBefore(node, document.body.firstChild);
+
+    node.addEventListener('click', function () {
+      node.classList.add('hidden');
+    });
   };
 
   window.load(successHandler, errorHandler);
@@ -58,4 +62,5 @@
     window.save(formData, saveHandler, errorHandler);
 
   });
+
 })();
