@@ -4,9 +4,9 @@
 
 (function () {
 
-  window.COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+  var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 
-  window.EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+  var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
   var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
@@ -29,7 +29,7 @@
   // Функция для изменения цвета мантии при нажатии
 
   var wizardCoatClickHandler = function () {
-    var coatColor = window.util.getRandomElement(window.COAT_COLORS);
+    var coatColor = window.util.getRandomElement(COAT_COLORS);
     wizardCoat.style.fill = coatColor;
     coatColorInput.value = coatColor;
   };
@@ -39,7 +39,7 @@
   // Функция для изменения цвета глаз при нажатии
 
   var wizardEyesClickHandler = function () {
-    var eyesColor = window.util.getRandomElement(window.EYES_COLORS);
+    var eyesColor = window.util.getRandomElement(EYES_COLORS);
     wizardEyes.style.fill = eyesColor;
     eyesColorInput.value = eyesColor;
   };
