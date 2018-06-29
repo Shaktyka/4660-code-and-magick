@@ -35,16 +35,20 @@
   };
 
   var errorHandler = function (errorMessage) {
-    var node = document.createElement('div');
-    node.classList.add('modal');
-    node.classList.add('modal--error');
-    node.tabIndex = 0;
+    window.node = document.createElement('div');
+    window.node.classList.add('modal');
+    window.node.classList.add('modal--error');
+    window.node.tabIndex = 0;
 
-    node.textContent = errorMessage;
-    document.body.insertBefore(node, document.body.firstChild);
+    window.node.textContent = errorMessage;
+    document.body.insertBefore(window.node, document.body.firstChild);
 
-    node.addEventListener('click', function () {
-      node.classList.add('hidden');
+    window.closeError = function () {
+      window.node.classList.add('hidden');
+    };
+
+    window.node.addEventListener('click', function () {
+      window.closeError();
     });
   };
 

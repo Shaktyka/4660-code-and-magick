@@ -30,6 +30,7 @@
 
   var closePopup = function () {
     window.userDialog.classList.add('hidden');
+    window.closeError();
     document.removeEventListener('keydown', escKeydownHandler);
   };
 
