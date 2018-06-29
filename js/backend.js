@@ -4,7 +4,7 @@
 
   // функция для отправки данных игрока на сервер
   window.save = function (data, onLoad, onError) {
-    var SAVE_URL = 'https://js.dump.academy/code-and-magick';
+    var SAVE_URL = 'https://js.dump.cademy/code-and-magick';
 
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
