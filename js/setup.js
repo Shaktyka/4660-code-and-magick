@@ -38,6 +38,7 @@
     var node = document.createElement('div');
     node.classList.add('modal');
     node.classList.add('modal--error');
+    node.tabIndex = 0;
 
     node.textContent = errorMessage;
     document.body.insertBefore(node, document.body.firstChild);
