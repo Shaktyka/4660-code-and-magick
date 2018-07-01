@@ -1,8 +1,10 @@
 'use strict';
 
 (function () {
+  var wizards = [];
 
-  var successHandler = function (wizards) {
+  var successHandler = function (data) {
+    wizards = data;
     window.render(wizards);
   };
 
