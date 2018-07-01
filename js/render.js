@@ -1,6 +1,6 @@
 'use strict';
 
-// ГЕНЕРАЦИЯ ПОХОЖИХ МАГОВ
+// ГЕНЕРАЦИЯ ПОХОЖЕГО МАГА
 
 (function () {
   window.userDialog = document.querySelector('.setup');
