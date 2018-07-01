@@ -14,45 +14,42 @@
 
   var setupPlayer = window.userDialog.querySelector('.setup-player');
 
-  var wizardCoat = setupPlayer.querySelector('.wizard-coat');
-
+  var wizardCoatElement = setupPlayer.querySelector('.wizard-coat');
   var coatColorInput = document.getElementById('coat-color');
 
-  var wizardEyes = setupPlayer.querySelector('.wizard-eyes');
-
+  var wizardEyesElement = setupPlayer.querySelector('.wizard-eyes');
   var eyesColorInput = document.getElementById('eyes-color');
 
-  var setupFireball = setupPlayer.querySelector('.setup-fireball-wrap');
-
+  var setupFireballElement = setupPlayer.querySelector('.setup-fireball-wrap');
   var fireballColorInput = document.getElementById('fireball-color');
 
   // Функция для изменения цвета мантии при нажатии
 
   var wizardCoatClickHandler = function () {
     var coatColor = window.util.getRandomElement(COAT_COLORS);
-    wizardCoat.style.fill = coatColor;
+    wizardCoatElement.style.fill = coatColor;
     coatColorInput.value = coatColor;
   };
 
-  wizardCoat.addEventListener('click', wizardCoatClickHandler);
+  wizardCoatElement.addEventListener('click', wizardCoatClickHandler);
 
   // Функция для изменения цвета глаз при нажатии
 
   var wizardEyesClickHandler = function () {
     var eyesColor = window.util.getRandomElement(EYES_COLORS);
-    wizardEyes.style.fill = eyesColor;
+    wizardEyesElement.style.fill = eyesColor;
     eyesColorInput.value = eyesColor;
   };
 
-  wizardEyes.addEventListener('click', wizardEyesClickHandler);
+  wizardEyesElement.addEventListener('click', wizardEyesClickHandler);
 
   // Функция для изменения цвета файербола при нажатии
 
   var wizardFireballClickHandler = function () {
     var fireballColor = window.util.getRandomElement(FIREBALL_COLORS);
-    setupFireball.style.backgroundColor = fireballColor;
+    setupFireballElement.style.backgroundColor = fireballColor;
     fireballColorInput.value = fireballColor;
   };
 
-  setupFireball.addEventListener('click', wizardFireballClickHandler);
+  setupFireballElement.addEventListener('click', wizardFireballClickHandler);
 })();
