@@ -3,6 +3,10 @@
 // ГЕНЕРАЦИЯ ПОХОЖИХ МАГОВ
 
 (function () {
+  window.userDialog = document.querySelector('.setup');
+
+  // Блок, куда будем вставлять сгенерированный список.
+  var similarListElement = window.userDialog.querySelector('.setup-similar-list');
 
   // Шаблон, который будем использовать для генерации волшебника.
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
@@ -14,6 +18,16 @@
     wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
     wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
     return wizardElement;
+  };
+
+  window.render = function (wizards) {
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i < 4; i++) {
+      fragment.appendChild(window.renderWizard(wizards[i]));
+    }
+    similarListElement.appendChild(fragment);
+
+    window.userDialog.querySelector('.setup-similar').classList.remove('hidden');
   };
 
   // Формирование объекта FormData и закрытие окна после успешной отправки
