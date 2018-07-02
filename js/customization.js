@@ -26,36 +26,43 @@
   var fireballColorInput = document.getElementById('fireball-color');
   var fireballColor;
 
+  // Система рангов магов
+  var getRank = function (wizard) {
+    var rank = 0;
+
+    if (wizard.colorCoat === coatColor) {
+      rank += 2;
+    }
+    if (wizard.colorEyes === eyesColor) {
+      rank += 1;
+    }
+    if (wizard.colorFireball === fireballColor) {
+      rank += 1;
+    }
+
+    return rank;
+  };
+
+  // Выбор магов в случае, если они равны по рангу
+  var namesComparator = function (left, right) {
+    if (left > right) {
+      return 1;
+    } else if (left < right) {
+      return -1;
+    } else {
+      return 0;
+    }
+  };
+
   // Фильтрация магов
   window.updateWizards = function () {
-
-    var sameCoatAndEyesAndFireballWizards = window.wizards.filter(function (it) {
-      return it.colorCoat === coatColor &&
-        it.colorEyes === eyesColor && it.colorFireball === fireballColor;
-    });
-
-    var sameCoatWizards = window.wizards.filter(function (it) {
-      return it.colorCoat === coatColor;
-    });
-    var sameEyesWizards = window.wizards.filter(function (it) {
-      return it.colorEyes === eyesColor;
-    });
-    var sameFireballWizards = window.wizards.filter(function (it) {
-      return it.colorFireball === fireballColor;
-    });
-
-    var filteredWizards = sameCoatAndEyesAndFireballWizards;
-    filteredWizards = filteredWizards.concat(sameCoatWizards);
-    filteredWizards = filteredWizards.concat(sameEyesWizards);
-    filteredWizards = filteredWizards.concat(sameFireballWizards);
-    filteredWizards = filteredWizards.concat(window.wizards);
-
-    var uniqueWizards =
-    filteredWizards.filter(function (it, i) {
-      return filteredWizards.indexOf(it) === i;
-    });
-
-    window.render(uniqueWizards);
+    window.render(window.wizards.sort(function (left, right) {
+      var rankDiff = getRank(right) - getRank(left);
+      if (rankDiff === 0) {
+        rankDiff = namesComparator(left.name, right.name);
+      }
+      return rankDiff;
+    }));
   };
 
   // Функция для изменения цвета мантии при нажатии
