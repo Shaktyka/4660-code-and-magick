@@ -1,11 +1,11 @@
 'use strict';
 
 (function () {
-  var wizards = [];
+  window.wizards = [];
 
   var successHandler = function (data) {
-    wizards = data;
-    window.render(wizards);
+    window.wizards = data;
+    window.updateWizards();
   };
 
   window.errorHandler = function (errorMessage) {
