@@ -16,62 +16,20 @@
 
   var wizardCoatElement = setupPlayer.querySelector('.wizard-coat');
   var coatColorInput = document.getElementById('coat-color');
-  var coatColor;
 
   var wizardEyesElement = setupPlayer.querySelector('.wizard-eyes');
   var eyesColorInput = document.getElementById('eyes-color');
-  var eyesColor;
 
   var setupFireballElement = setupPlayer.querySelector('.setup-fireball-wrap');
   var fireballColorInput = document.getElementById('fireball-color');
-  var fireballColor;
-
-  // Система рангов магов
-  var getRank = function (wizard) {
-    var rank = 0;
-
-    if (wizard.colorCoat === coatColor) {
-      rank += 2;
-    }
-    if (wizard.colorEyes === eyesColor) {
-      rank += 1;
-    }
-    if (wizard.colorFireball === fireballColor) {
-      rank += 1;
-    }
-
-    return rank;
-  };
-
-  // Выбор магов в случае, если они равны по рангу
-  var namesComparator = function (left, right) {
-    if (left > right) {
-      return 1;
-    } else if (left < right) {
-      return -1;
-    } else {
-      return 0;
-    }
-  };
-
-  // Фильтрация магов
-  window.updateWizards = function () {
-    window.render(window.wizards.sort(function (left, right) {
-      var rankDiff = getRank(right) - getRank(left);
-      if (rankDiff === 0) {
-        rankDiff = namesComparator(left.name, right.name);
-      }
-      return rankDiff;
-    }));
-  };
 
   // Функция для изменения цвета мантии при нажатии
 
   var coatClickHandler = function () {
     var newColor = window.util.getRandomElement(COAT_COLORS);
-    wizardCoatElement.style.fill = coatColor;
+    wizardCoatElement.style.fill = window.coatColor;
     coatColorInput.value = newColor;
-    coatColor = newColor;
+    window.coatColor = newColor;
     window.updateWizards();
   };
 
@@ -81,9 +39,9 @@
 
   var eyesClickHandler = function () {
     var newColor = window.util.getRandomElement(EYES_COLORS);
-    wizardEyesElement.style.fill = eyesColor;
+    wizardEyesElement.style.fill = window.eyesColor;
     eyesColorInput.value = newColor;
-    eyesColor = newColor;
+    window.eyesColor = newColor;
     window.updateWizards();
   };
 
@@ -93,9 +51,9 @@
 
   var fireballClickHandler = function () {
     var newColor = window.util.getRandomElement(FIREBALL_COLORS);
-    setupFireballElement.style.backgroundColor = fireballColor;
+    setupFireballElement.style.backgroundColor = window.fireballColor;
     fireballColorInput.value = newColor;
-    fireballColor = newColor;
+    window.fireballColor = newColor;
     window.updateWizards();
   };
 

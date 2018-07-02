@@ -1,7 +1,53 @@
 'use strict';
 
 (function () {
+  window.coatColor = '';
+  window.eyesColor = '';
+  window.fireballColor = '';
+
   window.wizards = [];
+
+  // Система рангов магов
+  var getRank = function (wizard) {
+    var rank = 0;
+
+    if (wizard.colorCoat === window.coatColor) {
+      rank += 2;
+    }
+    if (wizard.colorEyes === window.eyesColor) {
+      rank += 1;
+    }
+    if (wizard.colorFireball === window.fireballColor) {
+      rank += 1;
+    }
+    return rank;
+  };
+
+  // Фильтрация магов
+  window.updateWizards = function () {
+    window.render(window.wizards.slice().sort(function (left, right) {
+      var rankDiff = getRank(right) - getRank(left);
+      if (rankDiff === 0) {
+        rankDiff = window.wizards.indexOf(left) - window.wizards.indexOf(right);
+      }
+      return rankDiff;
+    }));
+  };
+
+  window.wizard.onEyesChange = window.debounce(function (color) {
+    window.eyesColor = color;
+    window.updateWizards();
+  });
+
+  window.wizard.onCoatChange = window.debounce(function (color) {
+    window.coatColor = color;
+    window.updateWizards();
+  });
+
+  window.wizard.onFireballChange = window.debounce(function (color) {
+    window.fireballColor = color;
+    window.updateWizards();
+  });
 
   var successHandler = function (data) {
     window.wizards = data;
