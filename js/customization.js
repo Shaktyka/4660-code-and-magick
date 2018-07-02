@@ -25,31 +25,37 @@
 
   // Функция для изменения цвета мантии при нажатии
 
-  var wizardCoatClickHandler = function () {
-    var coatColor = window.util.getRandomElement(COAT_COLORS);
+  var coatColor;
+  var coatClickHandler = function () {
+    var newColor = window.util.getRandomElement(COAT_COLORS);
     wizardCoatElement.style.fill = coatColor;
-    coatColorInput.value = coatColor;
+    coatColorInput.value = newColor;
+    coatColor = newColor;
   };
 
-  wizardCoatElement.addEventListener('click', wizardCoatClickHandler);
+  wizardCoatElement.addEventListener('click', coatClickHandler);
 
   // Функция для изменения цвета глаз при нажатии
 
-  var wizardEyesClickHandler = function () {
-    var eyesColor = window.util.getRandomElement(EYES_COLORS);
+  var eyesColor;
+  var eyesClickHandler = function () {
+    var newColor = window.util.getRandomElement(EYES_COLORS);
     wizardEyesElement.style.fill = eyesColor;
-    eyesColorInput.value = eyesColor;
+    eyesColorInput.value = newColor;
+    eyesColor = newColor;
   };
 
-  wizardEyesElement.addEventListener('click', wizardEyesClickHandler);
+  wizardEyesElement.addEventListener('click', eyesClickHandler);
 
   // Функция для изменения цвета файербола при нажатии
 
-  var wizardFireballClickHandler = function () {
-    var fireballColor = window.util.getRandomElement(FIREBALL_COLORS);
+  var fireballColor;
+  var fireballClickHandler = function () {
+    var newColor = window.util.getRandomElement(FIREBALL_COLORS);
     setupFireballElement.style.backgroundColor = fireballColor;
-    fireballColorInput.value = fireballColor;
+    fireballColorInput.value = newColor;
+    fireballColor = newColor;
   };
 
-  setupFireballElement.addEventListener('click', wizardFireballClickHandler);
+  setupFireballElement.addEventListener('click', fireballClickHandler);
 })();
