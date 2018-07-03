@@ -22,7 +22,9 @@
 
   window.render = function (wizards) {
     var fragment = document.createDocumentFragment();
-    for (var i = 0; i < 4; i++) {
+    var takeNumber = wizards.length > 4 ? 4 : wizards.length;
+    similarListElement.innerHTML = '';
+    for (var i = 0; i < takeNumber; i++) {
       fragment.appendChild(window.renderWizard(wizards[i]));
     }
     similarListElement.appendChild(fragment);
