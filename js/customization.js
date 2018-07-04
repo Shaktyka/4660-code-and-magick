@@ -24,7 +24,6 @@
   var fireballColorInput = document.getElementById('fireball-color');
 
   // Функция для изменения цвета мантии при нажатии
-
   var coatClickHandler = function () {
     var newColor = window.util.getRandomElement(COAT_COLORS);
     wizardCoatElement.style.fill = newColor;
@@ -36,7 +35,6 @@
   wizardCoatElement.addEventListener('click', coatClickHandler);
 
   // Функция для изменения цвета глаз при нажатии
-
   var eyesClickHandler = function () {
     var newColor = window.util.getRandomElement(EYES_COLORS);
     wizardEyesElement.style.fill = newColor;
@@ -48,7 +46,6 @@
   wizardEyesElement.addEventListener('click', eyesClickHandler);
 
   // Функция для изменения цвета файербола при нажатии
-
   var fireballClickHandler = function () {
     var newColor = window.util.getRandomElement(FIREBALL_COLORS);
     setupFireballElement.style.backgroundColor = newColor;
