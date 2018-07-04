@@ -23,16 +23,15 @@
     return rank;
   };
 
-  // Фильтрация магов
-  window.updateWizards = function () {
-    window.render(window.wizards.slice().sort(function (left, right) {
-      var rankDiff = getRank(right) - getRank(left);
-      if (rankDiff === 0) {
-        rankDiff = window.wizards.indexOf(left) - window.wizards.indexOf(right);
-      }
-      return rankDiff;
-    }));
-  };
+  //  var namesComparator = function (left, right) {
+  //    if (left > right) {
+  //      return 1;
+  //    } else if (left < right) {
+  //      return -1;
+  //    } else {
+  //      return 0;
+  //    }
+  //  };
 
   window.wizard.onEyesChange = window.debounce(function (color) {
     window.eyesColor = color;
@@ -48,6 +47,17 @@
     window.fireballColor = color;
     window.updateWizards();
   });
+
+  // Фильтрация магов
+  window.updateWizards = function () {
+    window.render(window.wizards.slice().sort(function (left, right) {
+      var rankDiff = getRank(right) - getRank(left);
+      if (rankDiff === 0) {
+        rankDiff = window.wizards.indexOf(left) - window.wizards.indexOf(right);
+      }
+      return rankDiff;
+    }));
+  };
 
   var successHandler = function (data) {
     window.wizards = data;

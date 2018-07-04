@@ -14,6 +14,11 @@
 
   var setupPlayer = window.userDialog.querySelector('.setup-player');
 
+  window.wizard = {
+    onEyesChange: function (color) {},
+    onCoatChange: function (color) {}
+  };
+
   var wizardCoatElement = setupPlayer.querySelector('.wizard-coat');
   var coatColorInput = document.getElementById('coat-color');
 
