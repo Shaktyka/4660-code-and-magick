@@ -27,7 +27,7 @@
 
   var coatClickHandler = function () {
     var newColor = window.util.getRandomElement(COAT_COLORS);
-    wizardCoatElement.style.fill = window.coatColor;
+    wizardCoatElement.style.fill = newColor;
     coatColorInput.value = newColor;
     window.coatColor = newColor;
     window.updateWizards();
@@ -39,7 +39,7 @@
 
   var eyesClickHandler = function () {
     var newColor = window.util.getRandomElement(EYES_COLORS);
-    wizardEyesElement.style.fill = window.eyesColor;
+    wizardEyesElement.style.fill = newColor;
     eyesColorInput.value = newColor;
     window.eyesColor = newColor;
     window.updateWizards();
@@ -51,7 +51,7 @@
 
   var fireballClickHandler = function () {
     var newColor = window.util.getRandomElement(FIREBALL_COLORS);
-    setupFireballElement.style.backgroundColor = window.fireballColor;
+    setupFireballElement.style.backgroundColor = newColor;
     fireballColorInput.value = newColor;
     window.fireballColor = newColor;
     window.updateWizards();

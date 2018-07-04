@@ -34,21 +34,6 @@
     }));
   };
 
-  window.wizard.onEyesChange = window.debounce(function (color) {
-    window.eyesColor = color;
-    window.updateWizards();
-  });
-
-  window.wizard.onCoatChange = window.debounce(function (color) {
-    window.coatColor = color;
-    window.updateWizards();
-  });
-
-  window.wizard.onFireballChange = window.debounce(function (color) {
-    window.fireballColor = color;
-    window.updateWizards();
-  });
-
   var successHandler = function (data) {
     window.wizards = data;
     window.updateWizards();
