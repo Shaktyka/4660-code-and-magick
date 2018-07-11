@@ -87,6 +87,6 @@
     });
   };
 
-  window.load(successHandler, window.errorHandler);
+  window.backend.load(successHandler, window.errorHandler);
 
 })();

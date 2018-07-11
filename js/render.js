@@ -42,7 +42,7 @@
       window.userDialog.classList.add('hidden');
     };
 
-    window.save(formData, saveHandler, window.errorHandler);
+    window.backend.save(formData, saveHandler, window.errorHandler);
 
   });
 

@@ -3,7 +3,7 @@
 (function () {
 
   // функция для отправки данных игрока на сервер
-  window.save = function (data, onLoad, onError) {
+  var save = function (data, onLoad, onError) {
     var SAVE_URL = 'https://js.dump.academy/code-and-magick';
 
     var xhr = new XMLHttpRequest();
@@ -48,7 +48,7 @@
   };
 
   // Функция для получения данных о волшебниках с сервера
-  window.load = function (onLoad, onError) {
+  var load = function (onLoad, onError) {
     var LOAD_URL = 'https://js.dump.academy/code-and-magick/data';
 
     var xhr = new XMLHttpRequest();
@@ -93,4 +93,8 @@
     xhr.send();
   };
 
+  window.backend = {
+    save: save,
+    load: load
+  };
 })();
