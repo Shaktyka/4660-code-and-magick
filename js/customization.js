@@ -29,11 +29,6 @@
   // Настраиваемые элементы мага и скрытые поля
   var setupPlayer = window.userDialog.querySelector('.setup-player');
 
-  window.wizard = {
-    onEyesChange: function () {},
-    onCoatChange: function () {}
-  };
-
   var wizardCoatElement = setupPlayer.querySelector('.wizard-coat');
   var coatColorInput = document.getElementById('coat-color');
 
