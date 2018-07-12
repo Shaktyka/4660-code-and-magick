@@ -3,7 +3,12 @@
 (function () {
   window.coatColor = '';
   window.eyesColor = '';
-  window.fireballColor = '';
+
+  var defaultWizardParameters = {
+    coatColor: 'rgb(101, 137, 164)',
+    eyesColor: 'black',
+    fireballColor: '#ee4830'
+  };
 
   window.wizards = [];
 
@@ -40,6 +45,10 @@
 
   var successHandler = function (data) {
     window.wizards = data;
+
+    window.coatColor = defaultWizardParameters.coatColor;
+    window.eyesColor = defaultWizardParameters.eyesColor;
+
     window.updateWizards();
   };
 
