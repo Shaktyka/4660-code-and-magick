@@ -3,6 +3,8 @@
 (function () {
   var node = null;
 
+  window.wizards = [];
+
   window.coatColor = '';
   window.eyesColor = '';
 
@@ -18,16 +20,14 @@
     onCoatChange: function () {}
   };
 
-  window.wizards = [];
-
   // Система рангов магов
-  var getRank = function (wizard) {
+  var getRank = function (currentWizard) {
     var rank = 0;
 
-    if (wizard.colorCoat === window.coatColor) {
+    if (currentWizard.colorCoat === window.coatColor) {
       rank += 2;
     }
-    if (wizard.colorEyes === window.eyesColor) {
+    if (currentWizard.colorEyes === window.eyesColor) {
       rank += 1;
     }
     return rank;
