@@ -15,8 +15,8 @@
   var setupPlayer = window.userDialog.querySelector('.setup-player');
 
   window.wizard = {
-    onEyesChange: function (color) {},
-    onCoatChange: function (color) {}
+    onEyesChange: function () {},
+    onCoatChange: function () {}
   };
 
   var wizardCoatElement = setupPlayer.querySelector('.wizard-coat');
