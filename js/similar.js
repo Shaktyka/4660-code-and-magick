@@ -15,11 +15,6 @@
     fireballColor: '#ee4830'
   };
 
-  var wizard = {
-    onEyesChange: function () {},
-    onCoatChange: function () {}
-  };
-
   // Система рангов магов
   var getRank = function (currentWizard) {
     var rank = 0;
@@ -32,16 +27,6 @@
     }
     return rank;
   };
-
-  wizard.onEyesChange = window.debounce(function (color) {
-    window.eyesColor = color;
-    window.updateWizards();
-  });
-
-  wizard.onCoatChange = window.debounce(function (color) {
-    window.coatColor = color;
-    window.updateWizards();
-  });
 
   // Фильтрация магов
   window.updateWizards = function () {
