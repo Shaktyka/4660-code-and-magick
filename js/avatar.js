@@ -19,8 +19,8 @@
     if (matches) {
       var reader = new FileReader();
 
-      reader.addEventListener('load', function () {
-        preview.src = reader.result;
+      reader.addEventListener('load', function (evtLoad) {
+        preview.src = evtLoad.target.result;
       });
 
       reader.readAsDataURL(file);
@@ -29,6 +29,27 @@
       dropZone.removeEventListener('dragleave', avatarDragleaveHandler);
 
       preview.style.outline = 0;
+      dropZone.title = 'Отличный выбор!';
+    }
+  };
+
+  var avatarChangeHandler = function (evt) {
+    evt.preventDefault();
+
+    var file = dropZone.files[0];
+    var fileName = file.name.toLowerCase();
+
+    var matches = FILE_TYPES.some(function (it) {
+      return fileName.endsWith(it);
+    });
+
+    if (matches) {
+      var reader = new FileReader();
+
+      reader.addEventListener('load', function () {
+        preview.src = reader.result;
+      });
+      reader.readAsDataURL(file);
       dropZone.title = 'Отличный выбор!';
     }
   };
@@ -47,4 +68,6 @@
   dropZone.addEventListener('dragover', avatarDragoverHandler);
 
   dropZone.addEventListener('dragleave', avatarDragleaveHandler);
+
+  dropZone.addEventListener('change', avatarChangeHandler);
 })();
