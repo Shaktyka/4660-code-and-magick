@@ -34,7 +34,7 @@
   };
 
   var avatarDragoverHandler = function (evt) {
-    preview.style.outline = '2px solid yellow';
+    preview.style.outline = '2px solid #f87421';
     evt.preventDefault();
   };
 
