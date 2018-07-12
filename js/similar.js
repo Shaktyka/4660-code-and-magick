@@ -30,9 +30,8 @@
 
   // Фильтрация магов
   window.updateWizards = function () {
-    window.render(window.wizards.slice().sort(function (left, right) {
-      var rankDiff = getRank(right) - getRank(left);
-      return rankDiff;
+    window.render(window.wizards.slice().sort(function (first, second) {
+      return getRank(second) - getRank(first);
     }));
   };
 

@@ -44,8 +44,10 @@
     wizardCoatElement.style.fill = newColor;
     coatColorInput.value = newColor;
     window.coatColor = newColor;
-    window.updateWizards();
+    changeCoat();
   };
+
+  var changeCoat = window.debounce(window.updateWizards);
 
   wizardCoatElement.addEventListener('click', coatClickHandler);
 
@@ -55,8 +57,10 @@
     wizardEyesElement.style.fill = newColor;
     eyesColorInput.value = newColor;
     window.eyesColor = newColor;
-    window.updateWizards();
+    changeEyes();
   };
+
+  var changeEyes = window.debounce(window.updateWizards);
 
   wizardEyesElement.addEventListener('click', eyesClickHandler);
 
