@@ -11,7 +11,7 @@
   var setupClose = window.userDialog.querySelector('.setup-close');
 
   // Стартовые координаты окна
-  var startCoords = {
+  var StartCoords = {
     x: window.userDialog.style.top,
     y: window.userDialog.style.left
   };
@@ -22,8 +22,8 @@
   };
 
   var openPopup = function () {
-    window.userDialog.style.top = startCoords.y;
-    window.userDialog.style.left = startCoords.x;
+    window.userDialog.style.top = StartCoords.y;
+    window.userDialog.style.left = StartCoords.x;
     window.userDialog.classList.remove('hidden');
     document.addEventListener('keydown', escKeydownHandler);
   };
