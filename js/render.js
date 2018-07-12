@@ -43,7 +43,5 @@
     };
 
     window.backend.save(formData, saveHandler, window.errorHandler);
-
   });
-
 })();
