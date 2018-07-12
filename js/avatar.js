@@ -3,12 +3,13 @@
 (function () {
   var FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
 
-  var fileChooser = document.querySelector('.upload input[type=file]');
+  var dropZone = document.querySelector('.upload input[name="avatar"]');
   var preview = document.querySelector('.setup-user-pic');
 
-  fileChooser.addEventListener('change', function () {
+  var avatarDropHandler = function (evt) {
+    evt.preventDefault();
 
-    var file = fileChooser.files[0];
+    var file = evt.dataTransfer.files[0];
     var fileName = file.name.toLowerCase();
 
     var matches = FILE_TYPES.some(function (it) {
@@ -23,7 +24,27 @@
       });
 
       reader.readAsDataURL(file);
-    }
-  });
 
+      dropZone.removeEventListener('dragover', avatarDragoverHandler);
+      dropZone.removeEventListener('dragleave', avatarDragleaveHandler);
+
+      preview.style.outline = 0;
+      dropZone.title = 'Отличный выбор!';
+    }
+  };
+
+  var avatarDragoverHandler = function (evt) {
+    preview.style.outline = '2px solid yellow';
+    evt.preventDefault();
+  };
+
+  var avatarDragleaveHandler = function () {
+    preview.style.outline = 0;
+  };
+
+  dropZone.addEventListener('drop', avatarDropHandler);
+
+  dropZone.addEventListener('dragover', avatarDragoverHandler);
+
+  dropZone.addEventListener('dragleave', avatarDragleaveHandler);
 })();
