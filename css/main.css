@@ -1047,5 +1047,5 @@ input[type=radio]:checked + .review-mark-label
 }
 
 .upload:hover .setup-user-pic {
-    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 3px 3px #f87421;
 }
