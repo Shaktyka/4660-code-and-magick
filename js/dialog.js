@@ -4,10 +4,9 @@
 
 (function () {
 
-  // Находим то, что будем перетаскивать
+  // Элемент, за который будем перетаскивать
   var dialogHandler = window.userDialog.querySelector('.setup input');
 
-  // Добавляем обработчик 1 фазы события - mousdown
   dialogHandler.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
@@ -49,7 +48,6 @@
       }
     };
 
-    // Добавляем обработчики событий на движение мыши и на отжатие кнопки мыши
     document.addEventListener('mousemove', mouseMoveHandler);
     document.addEventListener('mouseup', mouseUpHandler);
   });

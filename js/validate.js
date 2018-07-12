@@ -1,7 +1,5 @@
 'use strict';
 
-// ОБРАБОТКА НЕВАЛИДНОГО ВВОДА ИМЕНИ В ОКНЕ ПЕРСОНАЖА
-
 (function () {
   var userNameInput = window.userDialog.querySelector('.setup-user-name');
 

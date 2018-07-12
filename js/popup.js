@@ -3,27 +3,23 @@
 // ОТКРЫТИЕ-ЗАКРЫТИЕ ОКНА НАСТРОЕК
 
 (function () {
-
-  // Кнопки открытия и закрытия окна настроек персонажа
-
   var setupOpen = document.querySelector('.setup-open');
 
   var setupClose = window.userDialog.querySelector('.setup-close');
 
-  // Стартовые координаты окна
-  var startCoords = {
+  var StartCoords = {
     x: window.userDialog.style.top,
     y: window.userDialog.style.left
   };
 
-  // Функция обработки клавиатурного события
+  // Обработка нажатия ESC
   var escKeydownHandler = function (evt) {
     window.util.isEscEvent(evt, closePopup);
   };
 
   var openPopup = function () {
-    window.userDialog.style.top = startCoords.y;
-    window.userDialog.style.left = startCoords.x;
+    window.userDialog.style.top = StartCoords.y;
+    window.userDialog.style.left = StartCoords.x;
     window.userDialog.classList.remove('hidden');
     document.addEventListener('keydown', escKeydownHandler);
   };

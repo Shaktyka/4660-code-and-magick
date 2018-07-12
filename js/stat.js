@@ -33,7 +33,7 @@
 
   // ПОЛУЧЕНИЕ ПРОМЕЖУТОЧНЫХ ДАННЫХ
 
-  // Функция для поиска максимального значения (самый высокий столбец)
+  // Поиск максимального значения (самый высокий столбец)
   var getMaxElement = function (array) {
     var maxElement = array[0];
     for (var i = 0; i < array.length; i++) {
@@ -44,14 +44,14 @@
     return Math.ceil(maxElement);
   };
 
-  // Функция генерации рандомного синего цвета
+  // Генерация рандомного синего цвета
   var getBarColor = function () {
     var BLUE_MIN = 10;
     var BLUE_MAX = 150;
     var COLOR_STEP = 10;
-    // генерируем случайное число от 10 до 150 (синий диапазон)
+    // Генерируем случайное число от 10 до 150 (синий диапазон)
     var ran = Math.abs(Math.floor(Math.random() * (BLUE_MIN - BLUE_MAX) + COLOR_STEP));
-    // формируем вывод цвета в нужном формате rgba
+    // Формируем вывод цвета в нужном формате rgba
     var color = 'rgba(' + ran + ', ' + ran + ', ' + '255, 1)';
     return color;
   };
