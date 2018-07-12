@@ -304,6 +304,10 @@ window.Game = (function () {
     this.setDeactivated(false);
   };
 
+  var reloadCurrentWindow = function () {
+    window.location.reload(true);
+  };
+
   Game.prototype = {
     /**
      * Текущий уровень игры.
@@ -444,6 +448,7 @@ window.Game = (function () {
       switch (this.state.currentStatus) {
         case Verdict.WIN:
           if (window.renderStatistics) {
+            setTimeout(reloadCurrentWindow, 5000);
             var statistics = this._generateStatistics(new Date() - this.state.startTime);
             var keys = this._shuffleArray(Object.keys(statistics));
             window.renderStatistics(this.ctx, keys, keys.map(function (it) {
