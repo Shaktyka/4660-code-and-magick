@@ -4,6 +4,7 @@
   window.coatColor = '';
   window.eyesColor = '';
 
+  // Дефолтный маг
   var defaultWizardParameters = {
     coatColor: 'rgb(101, 137, 164)',
     eyesColor: 'black',
@@ -43,6 +44,7 @@
     }));
   };
 
+  // При успешной загрузке списка магов
   var successHandler = function (data) {
     window.wizards = data;
 
@@ -52,6 +54,7 @@
     window.updateWizards();
   };
 
+  // Вывод сообщения с ошибкой при загрузке
   window.errorHandler = function (errorMessage) {
     window.node = document.createElement('div');
     window.node.classList.add('modal');
@@ -75,5 +78,4 @@
   };
 
   window.backend.load(successHandler, window.errorHandler);
-
 })();

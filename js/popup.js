@@ -3,20 +3,16 @@
 // ОТКРЫТИЕ-ЗАКРЫТИЕ ОКНА НАСТРОЕК
 
 (function () {
-
-  // Кнопки открытия и закрытия окна настроек персонажа
-
   var setupOpen = document.querySelector('.setup-open');
 
   var setupClose = window.userDialog.querySelector('.setup-close');
 
-  // Стартовые координаты окна
   var StartCoords = {
     x: window.userDialog.style.top,
     y: window.userDialog.style.left
   };
 
-  // Функция обработки клавиатурного события
+  // Обработка нажатия ESC
   var escKeydownHandler = function (evt) {
     window.util.isEscEvent(evt, closePopup);
   };

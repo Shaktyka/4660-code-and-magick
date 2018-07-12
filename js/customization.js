@@ -3,7 +3,6 @@
 // НАСТРОЙКА ВНЕШНЕГО ВИДА МАГА
 
 (function () {
-
   var COAT_COLORS = [
     'rgb(101, 137, 164)',
     'rgb(241, 43, 107)',
@@ -12,7 +11,6 @@
     'rgb(215, 210, 55)',
     'rgb(0, 0, 0)'
   ];
-
   var EYES_COLORS = [
     'black',
     'red',
@@ -20,7 +18,6 @@
     'yellow',
     'green'
   ];
-
   var FIREBALL_COLORS = [
     '#ee4830',
     '#30a8ee',
@@ -30,7 +27,6 @@
   ];
 
   // Настраиваемые элементы мага и скрытые поля
-
   var setupPlayer = window.userDialog.querySelector('.setup-player');
 
   window.wizard = {
@@ -58,7 +54,7 @@
 
   wizardCoatElement.addEventListener('click', coatClickHandler);
 
-  // Функция для изменения цвета глаз при нажатии
+  // Изменение цвета глаз при нажатии
   var eyesClickHandler = function () {
     var newColor = window.util.getRandomElement(EYES_COLORS);
     wizardEyesElement.style.fill = newColor;
@@ -69,7 +65,7 @@
 
   wizardEyesElement.addEventListener('click', eyesClickHandler);
 
-  // Функция для изменения цвета файербола при нажатии
+  // Изменение цвета файербола при нажатии
   var fireballClickHandler = function () {
     var newColor = window.util.getRandomElement(FIREBALL_COLORS);
     setupFireballElement.style.backgroundColor = newColor;

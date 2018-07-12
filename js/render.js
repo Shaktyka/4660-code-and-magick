@@ -5,13 +5,13 @@
 (function () {
   window.userDialog = document.querySelector('.setup');
 
-  // Блок, куда будем вставлять сгенерированный список.
+  // Блок для вставки списка магов.
   var similarListElement = window.userDialog.querySelector('.setup-similar-list');
 
-  // Шаблон, который будем использовать для генерации волшебника.
+  // Шаблон для генерации мага.
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
-  // Клонируем шаблон мага, назначаем элементам соответствующие значения из объекта мага.
+  // Рендерим мага
   window.renderWizard = function (wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
     wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
@@ -20,6 +20,7 @@
     return wizardElement;
   };
 
+  // Добавляем всех магов в целевой блок
   window.render = function (wizards) {
     var fragment = document.createDocumentFragment();
     var takeNumber = wizards.length > 4 ? 4 : wizards.length;

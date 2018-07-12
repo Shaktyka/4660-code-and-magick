@@ -1,8 +1,7 @@
 'use strict';
 
 (function () {
-
-  // функция для отправки данных игрока на сервер
+  // Отправка данных игрока на сервер
   var save = function (data, onLoad, onError) {
     var SAVE_URL = 'https://js.dump.academy/code-and-magick';
 
@@ -47,7 +46,7 @@
     xhr.send(data);
   };
 
-  // Функция для получения данных о волшебниках с сервера
+  // Получение данных о магах с сервера
   var load = function (onLoad, onError) {
     var LOAD_URL = 'https://js.dump.academy/code-and-magick/data';
 
